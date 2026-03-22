@@ -1,0 +1,303 @@
+<%
+  layout    = 'layouts/main';
+  title     = (typeof automation !== 'undefined' ? automation.name : 'Automation') + ' — Details';
+  activePage = 'automations';
+%>
+
+<!-- Breadcrumb -->
+<nav class="flex items-center space-x-1 text-sm text-gray-500 mb-6">
+  <a href="/dashboard/automations" class="hover:text-blue-600 transition-colors">Automations</a>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+  </svg>
+  <span class="text-gray-900 font-medium truncate max-w-xs"><%= automation.name %></span>
+</nav>
+
+<!-- Header row -->
+<div class="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+  <div class="flex items-center space-x-3">
+    <!-- Status dot -->
+    <div class="w-3 h-3 rounded-full flex-shrink-0 <%= automation.status === 'active' ? 'bg-green-500' : automation.status === 'paused' ? 'bg-yellow-500' : 'bg-gray-400' %>"></div>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900"><%= automation.name %></h1>
+      <p class="text-sm text-gray-500 mt-0.5 capitalize"><%= automation.status %> &bull; Created <%= new Date(automation.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) %></p>
+    </div>
+  </div>
+  <div class="flex items-center space-x-2 flex-shrink-0">
+    <!-- Toggle active/pause -->
+    <form method="POST" action="/dashboard/automations/<%= automation._id %>/toggle">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <button type="submit" class="<%= automation.status === 'active' ? 'btn-secondary' : 'btn-primary' %> text-sm flex items-center space-x-1.5">
+        <% if (automation.status === 'active') { %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Pause</span>
+        <% } else { %>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>Activate</span>
+        <% } %>
+      </button>
+    </form>
+    <a href="/dashboard/automations/<%= automation._id %>/edit" class="btn-secondary text-sm flex items-center space-x-1.5">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+      </svg>
+      <span>Edit</span>
+    </a>
+    <form method="POST" action="/dashboard/automations/<%= automation._id %>?_method=DELETE"
+          onsubmit="return confirm('Are you sure you want to delete this automation? This cannot be undone.');">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <button type="submit" class="btn-danger text-sm flex items-center space-x-1.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+        </svg>
+        <span>Delete</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Stats cards -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+  <%
+    const stats = [
+      { label: 'Total Triggered', value: (automation.stats && automation.stats.totalTriggered) || 0, icon: 'M13 10V3L4 14h7v7l9-11h-7z', color: 'blue' },
+      { label: 'Completed',       value: (automation.stats && automation.stats.completed)     || 0, icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'green' },
+      { label: 'Failed',          value: (automation.stats && automation.stats.failed)        || 0, icon: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'red' },
+      { label: 'Success Rate',    value: (automation.stats && automation.stats.totalTriggered > 0 ? Math.round((automation.stats.completed / automation.stats.totalTriggered) * 100) : 0) + '%', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z', color: 'violet' },
+    ];
+  %>
+  <% stats.forEach(function(stat) { %>
+  <div class="card p-5">
+    <div class="flex items-center justify-between mb-3">
+      <div class="w-9 h-9 bg-<%= stat.color %>-50 rounded-lg flex items-center justify-center">
+        <svg class="w-4.5 h-4.5 text-<%= stat.color %>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= stat.icon %>"/>
+        </svg>
+      </div>
+    </div>
+    <div class="text-2xl font-black text-gray-900"><%= stat.value.toLocaleString ? stat.value.toLocaleString() : stat.value %></div>
+    <div class="text-xs text-gray-500 font-medium mt-0.5"><%= stat.label %></div>
+  </div>
+  <% }) %>
+</div>
+
+<!-- Two-column layout: Steps + Chart -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
+
+  <!-- Steps visualization -->
+  <div class="lg:col-span-2 card p-6">
+    <h2 class="text-base font-bold text-gray-900 mb-5 flex items-center space-x-2">
+      <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
+      </svg>
+      <span>Automation Steps</span>
+    </h2>
+
+    <% if (!automation.steps || automation.steps.length === 0) { %>
+    <p class="text-sm text-gray-400 text-center py-6">No steps configured yet. <a href="/dashboard/automations/<%= automation._id %>/edit" class="text-blue-600 underline">Edit automation</a></p>
+    <% } else { %>
+    <ol class="relative border-l border-gray-200 ml-3 space-y-6">
+      <% automation.steps.forEach(function(step, idx) {
+           const stepIcons = {
+             'send_dm':     'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+             'delay':       'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+             'add_tag':     'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z',
+             'remove_tag':  'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z',
+             'condition':   'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+             'http_request':'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064',
+           };
+           const stepIcon = stepIcons[step.type] || 'M13 10V3L4 14h7v7l9-11h-7z';
+      %>
+      <li class="ml-6">
+        <!-- Step number circle on the line -->
+        <span class="absolute -left-3 flex items-center justify-center w-6 h-6 rounded-full bg-blue-50 border-2 border-blue-200 text-xs font-black text-blue-600">
+          <%= idx + 1 %>
+        </span>
+        <div class="bg-gray-50 rounded-xl p-3">
+          <div class="flex items-start space-x-2">
+            <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="<%= stepIcon %>"/>
+            </svg>
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-bold text-gray-700 capitalize"><%= (step.type || 'unknown').replace(/_/g, ' ') %></p>
+              <% if (step.config) { %>
+              <% if (step.config.message) { %>
+              <p class="text-xs text-gray-500 mt-0.5 truncate">"<%= step.config.message.substring(0,60) %><%= step.config.message.length > 60 ? '…' : '' %>"</p>
+              <% } else if (step.config.delay) { %>
+              <p class="text-xs text-gray-500 mt-0.5">Wait <%= step.config.delay %> <%= step.config.delayUnit || 'minutes' %></p>
+              <% } else if (step.config.tag) { %>
+              <p class="text-xs text-gray-500 mt-0.5">Tag: <%= step.config.tag %></p>
+              <% } %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% }) %>
+    </ol>
+    <% } %>
+  </div>
+
+  <!-- Trigger chart -->
+  <div class="lg:col-span-3 card p-6">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-base font-bold text-gray-900 flex items-center space-x-2">
+        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
+        </svg>
+        <span>Daily Triggers — Last 30 Days</span>
+      </h2>
+    </div>
+    <div class="relative">
+      <canvas id="triggers-chart" height="220"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Recent executions table -->
+<div class="card overflow-hidden">
+  <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+    <h2 class="text-base font-bold text-gray-900">Recent Executions</h2>
+    <span class="text-xs text-gray-500">Last 25 runs</span>
+  </div>
+
+  <% if (!executions || executions.length === 0) { %>
+  <div class="text-center py-12">
+    <p class="text-sm text-gray-400">No executions recorded yet. Activate this automation to start tracking runs.</p>
+  </div>
+  <% } else { %>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="bg-gray-50 border-b border-gray-100 text-left">
+          <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact</th>
+          <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Triggered At</th>
+          <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+          <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Duration</th>
+          <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Steps</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-50">
+        <% executions.forEach(function(exec) { %>
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="px-6 py-3.5">
+            <% if (exec.contact) { %>
+            <a href="/dashboard/contacts/<%= exec.contact._id %>"
+               class="flex items-center space-x-2 group">
+              <div class="w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-violet-500 flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
+                <%= exec.contact.instagramUsername ? exec.contact.instagramUsername.charAt(0).toUpperCase() : '?' %>
+              </div>
+              <span class="font-medium text-gray-800 group-hover:text-blue-600 transition-colors">
+                @<%= exec.contact.instagramUsername || 'Unknown' %>
+              </span>
+            </a>
+            <% } else { %>
+            <span class="text-gray-400 text-xs">—</span>
+            <% } %>
+          </td>
+          <td class="px-6 py-3.5 text-gray-600 whitespace-nowrap">
+            <%= new Date(exec.createdAt).toLocaleString('en-GB', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) %>
+          </td>
+          <td class="px-6 py-3.5">
+            <%
+              const statusClass = {
+                completed: 'bg-green-100 text-green-700',
+                failed:    'bg-red-100 text-red-700',
+                running:   'bg-blue-100 text-blue-700',
+                queued:    'bg-gray-100 text-gray-600',
+              };
+              const sc = statusClass[exec.status] || 'bg-gray-100 text-gray-600';
+            %>
+            <span class="text-xs font-medium px-2.5 py-1 rounded-full <%= sc %> capitalize"><%= exec.status %></span>
+          </td>
+          <td class="px-6 py-3.5 text-gray-600 text-xs whitespace-nowrap">
+            <% if (exec.durationMs != null) { %>
+              <% const d = exec.durationMs; %>
+              <%= d < 1000 ? d + 'ms' : (d / 1000).toFixed(1) + 's' %>
+            <% } else { %>—<% } %>
+          </td>
+          <td class="px-6 py-3.5 text-gray-600 text-xs">
+            <% if (exec.stepsCompleted != null && exec.totalSteps != null) { %>
+            <div class="flex items-center space-x-2">
+              <div class="flex-1 bg-gray-100 rounded-full h-1.5 w-16">
+                <div class="bg-blue-500 rounded-full h-1.5" style="width:<%= Math.round((exec.stepsCompleted/exec.totalSteps)*100) %>%"></div>
+              </div>
+              <span><%= exec.stepsCompleted %>/<%= exec.totalSteps %></span>
+            </div>
+            <% } else { %>—<% } %>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  const ctx = document.getElementById('triggers-chart');
+  if (!ctx) return;
+
+  // Chart data passed from the controller
+  const chartData = <%- JSON.stringify(typeof dailyTriggers !== 'undefined' ? dailyTriggers : []) %>;
+
+  // Build labels and values for last 30 days
+  const labels = [];
+  const values = [];
+
+  // Fill in all 30 days, defaulting to 0 when no data exists
+  const dataMap = {};
+  chartData.forEach(function (d) { dataMap[d._id] = d.count; });
+
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().slice(0, 10);
+    labels.push(d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }));
+    values.push(dataMap[key] || 0);
+  }
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label:           'Triggers',
+        data:            values,
+        borderColor:     '#2563eb',
+        backgroundColor: 'rgba(37,99,235,0.08)',
+        borderWidth:     2,
+        pointRadius:     3,
+        pointHoverRadius:5,
+        fill:            true,
+        tension:         0.4,
+      }],
+    },
+    options: {
+      responsive:          true,
+      maintainAspectRatio: true,
+      interaction:         { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function (ctx) { return ' ' + ctx.parsed.y + ' trigger' + (ctx.parsed.y !== 1 ? 's' : ''); },
+          },
+        },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, maxTicksLimit: 8 } },
+        y: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } },
+      },
+    },
+  });
+})();
+</script>

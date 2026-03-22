@@ -1,0 +1,194 @@
+<%
+  layout = 'layouts/main';
+  title = 'Profile Settings';
+  activePage = 'settings';
+%>
+
+<div class="max-w-3xl mx-auto">
+  <!-- Page Header -->
+  <div class="mb-8">
+    <h1 class="text-2xl font-bold text-gray-900">Profile Settings</h1>
+    <p class="text-gray-500 mt-1">Manage your account information and preferences</p>
+  </div>
+
+  <!-- Profile Picture + Name Card -->
+  <div class="card mb-6">
+    <div class="flex items-start space-x-6">
+      <div class="relative flex-shrink-0">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-2xl font-bold">
+          <%= typeof user !== 'undefined' && user.name ? user.name.charAt(0).toUpperCase() : 'U' %>
+        </div>
+        <button class="absolute bottom-0 right-0 w-7 h-7 bg-white rounded-full border-2 border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors shadow-sm">
+          <svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <h2 class="text-lg font-semibold text-gray-900"><%= typeof user !== 'undefined' ? user.name : 'User Name' %></h2>
+        <p class="text-gray-500 text-sm"><%= typeof user !== 'undefined' ? user.email : 'user@example.com' %></p>
+        <div class="flex items-center space-x-2 mt-2">
+          <span class="badge-active">
+            <%= typeof user !== 'undefined' && user.subscription ? user.subscription.planName : 'Starter Plan' %>
+          </span>
+          <span class="text-xs text-gray-400">Member since <%= typeof user !== 'undefined' && user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'January 2025' %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Form -->
+  <div class="card mb-6">
+    <h3 class="text-base font-semibold text-gray-900 mb-5">Personal Information</h3>
+    <form action="/profile" method="POST" class="space-y-5" novalidate>
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <input type="hidden" name="_method" value="PATCH">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="name" class="form-label">Full name</label>
+          <input type="text" id="name" name="name" class="input-field"
+            value="<%= typeof user !== 'undefined' ? user.name : '' %>" required>
+        </div>
+        <div>
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" id="email" name="email" class="input-field"
+            value="<%= typeof user !== 'undefined' ? user.email : '' %>" required>
+          <% if (typeof user !== 'undefined' && !user.emailVerified) { %>
+            <p class="text-xs text-yellow-600 mt-1 flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Email not verified. <a href="/auth/resend-verification" class="underline">Resend verification</a></span>
+            </p>
+          <% } %>
+        </div>
+      </div>
+
+      <div>
+        <label for="phone" class="form-label">Phone number <span class="text-gray-400 font-normal">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" class="input-field"
+          value="<%= typeof user !== 'undefined' && user.phone ? user.phone : '' %>"
+          placeholder="+91 98765 43210">
+      </div>
+
+      <div>
+        <label for="company" class="form-label">Company / Brand name <span class="text-gray-400 font-normal">(optional)</span></label>
+        <input type="text" id="company" name="company" class="input-field"
+          value="<%= typeof user !== 'undefined' && user.company ? user.company : '' %>"
+          placeholder="Your company name">
+      </div>
+
+      <div>
+        <label for="timezone" class="form-label">Timezone</label>
+        <select id="timezone" name="timezone" class="input-field">
+          <option value="Asia/Kolkata" <%= typeof user !== 'undefined' && user.timezone === 'Asia/Kolkata' ? 'selected' : '' %>>Asia/Kolkata (IST, UTC+5:30)</option>
+          <option value="America/New_York" <%= typeof user !== 'undefined' && user.timezone === 'America/New_York' ? 'selected' : '' %>>America/New_York (EST, UTC-5)</option>
+          <option value="America/Los_Angeles" <%= typeof user !== 'undefined' && user.timezone === 'America/Los_Angeles' ? 'selected' : '' %>>America/Los_Angeles (PST, UTC-8)</option>
+          <option value="Europe/London" <%= typeof user !== 'undefined' && user.timezone === 'Europe/London' ? 'selected' : '' %>>Europe/London (GMT, UTC+0)</option>
+          <option value="Asia/Singapore" <%= typeof user !== 'undefined' && user.timezone === 'Asia/Singapore' ? 'selected' : '' %>>Asia/Singapore (SGT, UTC+8)</option>
+        </select>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="submit" class="btn-primary">Save changes</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Change Password -->
+  <div class="card mb-6">
+    <h3 class="text-base font-semibold text-gray-900 mb-5">Change Password</h3>
+    <form action="/profile/password" method="POST" class="space-y-5" novalidate>
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <input type="hidden" name="_method" value="PATCH">
+
+      <div>
+        <label for="current_password" class="form-label">Current password</label>
+        <input type="password" id="current_password" name="current_password" class="input-field" required
+          placeholder="Enter current password">
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label for="new_password" class="form-label">New password</label>
+          <input type="password" id="new_password" name="new_password" class="input-field" required
+            placeholder="At least 8 characters" minlength="8">
+        </div>
+        <div>
+          <label for="confirm_new_password" class="form-label">Confirm new password</label>
+          <input type="password" id="confirm_new_password" name="confirm_new_password" class="input-field" required
+            placeholder="Repeat new password">
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="submit" class="btn-primary">Update password</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Notification Preferences -->
+  <div class="card mb-6">
+    <h3 class="text-base font-semibold text-gray-900 mb-5">Notification Preferences</h3>
+    <form action="/profile/notifications" method="POST" class="space-y-4">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+
+      <div class="space-y-3">
+        <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+          <div>
+            <p class="text-sm font-medium text-gray-900">Automation triggers</p>
+            <p class="text-xs text-gray-500">Get notified when automations fire</p>
+          </div>
+          <input type="checkbox" name="notif_triggers" class="w-4 h-4 text-blue-600 rounded"
+            <%= typeof user !== 'undefined' && user.notifications && user.notifications.triggers ? 'checked' : 'checked' %>>
+        </label>
+        <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+          <div>
+            <p class="text-sm font-medium text-gray-900">Campaign completions</p>
+            <p class="text-xs text-gray-500">When a campaign finishes sending</p>
+          </div>
+          <input type="checkbox" name="notif_campaigns" class="w-4 h-4 text-blue-600 rounded"
+            <%= typeof user !== 'undefined' && user.notifications && user.notifications.campaigns ? 'checked' : 'checked' %>>
+        </label>
+        <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+          <div>
+            <p class="text-sm font-medium text-gray-900">Plan & billing alerts</p>
+            <p class="text-xs text-gray-500">Renewals, limit warnings, invoices</p>
+          </div>
+          <input type="checkbox" name="notif_billing" class="w-4 h-4 text-blue-600 rounded"
+            <%= typeof user !== 'undefined' && user.notifications && user.notifications.billing ? 'checked' : 'checked' %>>
+        </label>
+        <label class="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+          <div>
+            <p class="text-sm font-medium text-gray-900">Weekly summary email</p>
+            <p class="text-xs text-gray-500">Weekly digest of your performance</p>
+          </div>
+          <input type="checkbox" name="notif_weekly" class="w-4 h-4 text-blue-600 rounded"
+            <%= typeof user !== 'undefined' && user.notifications && user.notifications.weekly ? 'checked' : '' %>>
+        </label>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="submit" class="btn-primary">Save preferences</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Danger Zone -->
+  <div class="card border-red-200">
+    <h3 class="text-base font-semibold text-red-600 mb-2">Danger Zone</h3>
+    <p class="text-sm text-gray-500 mb-4">Once you delete your account, there is no going back. All your data, automations, and contacts will be permanently removed.</p>
+    <button
+      type="button"
+      onclick="window.confirmModal('Delete Account', 'This will permanently delete your InstaFlow account and all associated data. This action cannot be undone.', function() { document.getElementById('delete-account-form').submit(); })"
+      class="btn-danger"
+    >
+      Delete my account
+    </button>
+    <form id="delete-account-form" action="/profile/delete" method="POST" class="hidden">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <input type="hidden" name="_method" value="DELETE">
+    </form>
+  </div>
+</div>

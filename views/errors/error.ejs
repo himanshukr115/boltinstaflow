@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error <%= statusCode %> | InstaFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="min-h-screen bg-gray-50 font-inter flex items-center justify-center px-4">
+
+  <div class="text-center max-w-md mx-auto">
+
+    <!-- Illustration -->
+    <div class="mb-8">
+      <% 
+        let bgColor = 'bg-yellow-100';
+        let textColor = 'text-yellow-400';
+        let icon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+        
+        if (statusCode >= 500) {
+          bgColor = 'bg-red-100';
+          textColor = 'text-red-400';
+          icon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+        } else if (statusCode >= 400) {
+          bgColor = 'bg-orange-100';
+          textColor = 'text-orange-400';
+          icon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>';
+        }
+      %>
+      <div class="w-32 h-32 <%= bgColor %> rounded-3xl flex items-center justify-center mx-auto mb-6">
+        <svg class="w-16 h-16 <%= textColor %>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <%- icon %>
+        </svg>
+      </div>
+
+      <div class="relative">
+        <p class="text-8xl font-extrabold text-gray-900 leading-none"><%= statusCode %></p>
+        <div class="absolute inset-x-0 bottom-1/2 h-1 bg-gradient-to-r from-blue-400 to-blue-600 opacity-20 rounded-full"></div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <h1 class="text-2xl font-bold text-gray-900 mb-3">
+      <% 
+        if (statusCode === 400) {
+          %>Bad Request<% 
+        } else if (statusCode === 401) {
+          %>Unauthorized<% 
+        } else if (statusCode === 403) {
+          %>Forbidden<% 
+        } else if (statusCode >= 500) {
+          %>Something went wrong<% 
+        } else if (statusCode >= 400) {
+          %>Oops! An error occurred<% 
+        } else {
+          %>Error<% 
+        }
+      %>
+    </h1>
+    
+    <p class="text-gray-500 mb-8 leading-relaxed">
+      <% 
+        if (statusCode === 400) {
+          %>The request couldn't be processed. Please check your input and try again.<% 
+        } else if (statusCode === 401) {
+          %>You need to be logged in to access this resource.<% 
+        } else if (statusCode === 403) {
+          %>You don't have permission to access this resource.<% 
+        } else if (statusCode >= 500) {
+          %>Our servers encountered an unexpected error. Don't worry — your data is safe. Our team is working on a fix.<% 
+        } else if (statusCode >= 400) {
+          %>The request couldn't be processed. Please try again later.<% 
+        } else {
+          %>An unexpected error occurred.<% 
+        }
+      %>
+    </p>
+
+    <!-- Error details in development -->
+    <% if (typeof stack !== 'undefined' && stack) { %>
+      <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
+        <p class="text-sm font-semibold text-red-900 mb-2">Error Details (Development Only)</p>
+        <pre class="text-xs text-red-700 overflow-auto max-h-32"><%= message %></pre>
+        <% if (requestId) { %>
+          <p class="text-xs text-red-600 mt-2">Request ID: <%= requestId %></p>
+        <% } %>
+      </div>
+    <% } else if (typeof requestId !== 'undefined' && requestId) { %>
+      <div class="mb-6 p-3 bg-gray-100 rounded-lg">
+        <p class="text-xs text-gray-500">Reference: <code class="font-mono text-gray-700"><%= requestId %></code></p>
+      </div>
+    <% } %>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <button onclick="history.back()" class="w-full sm:w-auto btn-secondary flex items-center justify-center space-x-2 py-2.5 px-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span>Go back</span>
+      </button>
+      <a href="/dashboard" class="w-full sm:w-auto btn-primary flex items-center justify-center space-x-2 py-2.5 px-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span>Dashboard</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

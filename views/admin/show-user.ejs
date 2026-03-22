@@ -1,0 +1,362 @@
+<%
+  layout    = 'layouts/admin';
+  title     = (adminUser ? adminUser.name : 'User') + ' — Admin User Detail';
+  activePage = 'users';
+%>
+
+<!-- Breadcrumb -->
+<nav class="flex items-center space-x-1 text-sm text-gray-500 mb-6">
+  <a href="/admin/users" class="hover:text-blue-600 transition-colors">Users</a>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+  </svg>
+  <span class="text-gray-900 font-medium"><%= adminUser.name %></span>
+</nav>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <!-- ===== LEFT: Profile + Subscription ===== -->
+  <div class="lg:col-span-1 space-y-5">
+
+    <!-- User Profile card -->
+    <div class="card p-6 text-center">
+      <div class="relative inline-block mb-4">
+        <% if (adminUser.avatarUrl) { %>
+        <img src="<%= adminUser.avatarUrl %>" alt="<%= adminUser.name %>"
+             class="w-20 h-20 rounded-full object-cover mx-auto ring-4 ring-white shadow-md">
+        <% } else { %>
+        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-violet-500 flex items-center justify-center mx-auto ring-4 ring-white shadow-md">
+          <span class="text-white text-2xl font-bold"><%= adminUser.name ? adminUser.name.charAt(0).toUpperCase() : '?' %></span>
+        </div>
+        <% } %>
+        <!-- Suspension badge -->
+        <% if (adminUser.isSuspended) { %>
+        <span class="absolute -bottom-1 -right-1 w-6 h-6 bg-red-500 border-2 border-white rounded-full flex items-center justify-center" title="Suspended">
+          <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+          </svg>
+        </span>
+        <% } %>
+      </div>
+
+      <h2 class="text-lg font-bold text-gray-900"><%= adminUser.name %></h2>
+      <p class="text-sm text-gray-500"><%= adminUser.email %></p>
+
+      <div class="flex items-center justify-center space-x-2 mt-2">
+        <!-- Role badge -->
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full capitalize
+          <%= adminUser.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700' %>">
+          <%= adminUser.role %>
+        </span>
+        <!-- Verified badge -->
+        <% if (adminUser.isEmailVerified) { %>
+        <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-green-100 text-green-700">Verified</span>
+        <% } else { %>
+        <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700">Unverified</span>
+        <% } %>
+        <!-- Suspended badge -->
+        <% if (adminUser.isSuspended) { %>
+        <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-red-100 text-red-700">Suspended</span>
+        <% } %>
+      </div>
+
+      <div class="text-xs text-gray-400 mt-4 space-y-1">
+        <p>Joined <%= new Date(adminUser.createdAt).toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }) %></p>
+        <% if (adminUser.lastLoginAt) { %>
+        <p>Last login <%= new Date(adminUser.lastLoginAt).toLocaleString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }) %></p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Current subscription card -->
+    <div class="card p-5">
+      <h3 class="text-sm font-bold text-gray-900 mb-3 flex items-center space-x-2">
+        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+        </svg>
+        <span>Subscription</span>
+      </h3>
+      <% if (subscription) { %>
+      <dl class="space-y-2 text-sm">
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Plan</dt>
+          <dd class="font-semibold text-gray-900"><%= subscription.plan ? subscription.plan.name : 'Unknown' %></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Status</dt>
+          <dd>
+            <%
+              const subStatusClass = {
+                active:   'bg-green-100 text-green-700',
+                trialing: 'bg-blue-100 text-blue-700',
+                canceled: 'bg-red-100 text-red-700',
+                past_due: 'bg-yellow-100 text-yellow-700',
+                expired:  'bg-gray-100 text-gray-600',
+              };
+              const ssc = subStatusClass[subscription.status] || 'bg-gray-100 text-gray-600';
+            %>
+            <span class="text-xs font-medium px-2 py-0.5 rounded-full capitalize <%= ssc %>"><%= subscription.status %></span>
+          </dd>
+        </div>
+        <% if (subscription.currentPeriodEnd) { %>
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Renews</dt>
+          <dd class="font-medium text-gray-700"><%= new Date(subscription.currentPeriodEnd).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) %></dd>
+        </div>
+        <% } %>
+        <% if (subscription.gateway) { %>
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Gateway</dt>
+          <dd class="font-medium text-gray-700 capitalize"><%= subscription.gateway %></dd>
+        </div>
+        <% } %>
+      </dl>
+      <% } else { %>
+      <p class="text-sm text-gray-400">No active subscription.</p>
+      <% } %>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="card p-5">
+      <h3 class="text-sm font-bold text-gray-900 mb-3">Account Stats</h3>
+      <dl class="space-y-2 text-sm">
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Automations</dt>
+          <dd class="font-semibold text-gray-900"><%= typeof automationCount !== 'undefined' ? automationCount : '—' %></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Campaigns</dt>
+          <dd class="font-semibold text-gray-900"><%= typeof campaignCount !== 'undefined' ? campaignCount : '—' %></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-gray-500">Contacts</dt>
+          <dd class="font-semibold text-gray-900"><%= typeof contactCount !== 'undefined' ? contactCount : '—' %></dd>
+        </div>
+        <div class="flex justify-between">
+          <dt class="text-gray-500">DMs Sent (Total)</dt>
+          <dd class="font-semibold text-gray-900"><%= typeof totalDmsSent !== 'undefined' ? totalDmsSent.toLocaleString() : '—' %></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ===== RIGHT: Actions + Instagram + Payments ===== -->
+  <div class="lg:col-span-2 space-y-5">
+
+    <!-- Admin actions card -->
+    <div class="card p-6">
+      <h3 class="text-base font-bold text-gray-900 mb-4">Admin Actions</h3>
+      <div class="flex flex-wrap gap-3">
+
+        <!-- Suspend / Restore -->
+        <% if (!adminUser.isSuspended) { %>
+        <form method="POST" action="/admin/users/<%= adminUser._id %>/suspend"
+              onsubmit="return confirm('Are you sure you want to suspend this user? They will lose access immediately.')">
+          <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+          <button type="submit" class="btn-danger text-sm flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636"/>
+            </svg>
+            <span>Suspend Account</span>
+          </button>
+        </form>
+        <% } else { %>
+        <form method="POST" action="/admin/users/<%= adminUser._id %>/unsuspend">
+          <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+          <button type="submit" class="btn-primary text-sm flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Restore Account</span>
+          </button>
+        </form>
+        <% } %>
+
+        <!-- Assign plan button -->
+        <button type="button" onclick="document.getElementById('assign-plan-modal').classList.remove('hidden')"
+                class="btn-secondary text-sm flex items-center space-x-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+          </svg>
+          <span>Assign Plan</span>
+        </button>
+
+        <!-- Reset password -->
+        <form method="POST" action="/admin/users/<%= adminUser._id %>/reset-password"
+              onsubmit="return confirm('Send a password reset email to ' + '<%= adminUser.email %>' + '?')">
+          <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+          <button type="submit" class="btn-secondary text-sm flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+            </svg>
+            <span>Reset Password</span>
+          </button>
+        </form>
+
+        <!-- Delete account -->
+        <form method="POST" action="/admin/users/<%= adminUser._id %>?_method=DELETE"
+              onsubmit="return confirm('PERMANENTLY delete this account and all associated data? This cannot be undone.')">
+          <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+          <button type="submit" class="btn-danger text-sm flex items-center space-x-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+            <span>Delete Account</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Instagram accounts -->
+    <div class="card overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h3 class="text-base font-bold text-gray-900">Connected Instagram Accounts</h3>
+      </div>
+      <% if (!instagramAccounts || instagramAccounts.length === 0) { %>
+      <div class="text-center py-8">
+        <p class="text-sm text-gray-400">No Instagram accounts connected.</p>
+      </div>
+      <% } else { %>
+      <ul class="divide-y divide-gray-50">
+        <% instagramAccounts.forEach(function(acct) { %>
+        <li class="px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <% if (acct.profilePicUrl) { %>
+            <img src="<%= acct.profilePicUrl %>" alt="<%= acct.username %>" class="w-10 h-10 rounded-full object-cover">
+            <% } else { %>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-orange-400 flex items-center justify-center">
+              <span class="text-white text-sm font-bold"><%= acct.username ? acct.username.charAt(0).toUpperCase() : 'I' %></span>
+            </div>
+            <% } %>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">@<%= acct.username %></p>
+              <p class="text-xs text-gray-500">
+                <%= acct.followersCount ? acct.followersCount.toLocaleString() + ' followers' : '' %>
+                <% if (acct.tokenExpiresAt) { %>
+                &bull; Token expires <%= new Date(acct.tokenExpiresAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) %>
+                <% } %>
+              </p>
+            </div>
+          </div>
+          <span class="text-xs font-medium px-2 py-1 rounded-full <%= acct.isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500' %>">
+            <%= acct.isActive ? 'Active' : 'Inactive' %>
+          </span>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
+
+    <!-- Payment history -->
+    <div class="card overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="text-base font-bold text-gray-900">Payment History</h3>
+        <a href="/admin/payments?userId=<%= adminUser._id %>" class="text-xs text-blue-600 hover:text-blue-700 font-medium">View all &rarr;</a>
+      </div>
+
+      <% if (!payments || payments.length === 0) { %>
+      <div class="text-center py-8">
+        <p class="text-sm text-gray-400">No payments recorded.</p>
+      </div>
+      <% } else { %>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-100 text-left">
+              <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+              <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Plan</th>
+              <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount</th>
+              <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Gateway</th>
+              <th class="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <% payments.forEach(function(payment) { %>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-6 py-3 text-gray-600 whitespace-nowrap text-xs">
+                <%= new Date(payment.createdAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) %>
+              </td>
+              <td class="px-6 py-3 text-gray-900 font-medium text-xs">
+                <%= payment.planName || '—' %>
+              </td>
+              <td class="px-6 py-3 text-gray-900 font-semibold whitespace-nowrap">
+                <%
+                  const currency = payment.currency ? payment.currency.toUpperCase() : 'INR';
+                  const amount   = payment.amount ? (payment.amount / 100).toFixed(2) : '0.00';
+                %>
+                <%= currency %> <%= amount %>
+              </td>
+              <td class="px-6 py-3 text-gray-600 text-xs capitalize"><%= payment.gateway || '—' %></td>
+              <td class="px-6 py-3">
+                <%
+                  const payStatusClass = {
+                    captured:  'bg-green-100 text-green-700',
+                    refunded:  'bg-yellow-100 text-yellow-700',
+                    failed:    'bg-red-100 text-red-700',
+                    pending:   'bg-gray-100 text-gray-600',
+                  };
+                  const psc = payStatusClass[payment.status] || 'bg-gray-100 text-gray-600';
+                %>
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full capitalize <%= psc %>">
+                  <%= payment.status %>
+                </span>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <% } %>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== Assign Plan Modal ===== -->
+<div id="assign-plan-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black bg-opacity-50" onclick="document.getElementById('assign-plan-modal').classList.add('hidden')"></div>
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="text-lg font-bold text-gray-900">Assign Plan</h3>
+      <button type="button" onclick="document.getElementById('assign-plan-modal').classList.add('hidden')"
+              class="text-gray-400 hover:text-gray-600 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <form method="POST" action="/admin/users/<%= adminUser._id %>/assign-plan">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Select Plan</label>
+          <select name="planId" required
+                  class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">-- Choose a plan --</option>
+            <% if (typeof plans !== 'undefined') { %>
+            <% plans.forEach(function(plan) { %>
+            <option value="<%= plan._id %>" <%= subscription && subscription.planId && String(subscription.planId) === String(plan._id) ? 'selected' : '' %>>
+              <%= plan.name %> — <%= plan.price === 0 ? 'Free' : plan.currency + ' ' + (plan.price/100).toFixed(0) + '/mo' %>
+            </option>
+            <% }) %>
+            <% } %>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1.5">Duration (months)</label>
+          <input type="number" name="durationMonths" min="1" max="24" value="1"
+                 class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="checkbox" id="override-existing" name="overrideExisting" value="true" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+          <label for="override-existing" class="text-sm text-gray-700">Override existing subscription</label>
+        </div>
+      </div>
+      <div class="flex space-x-3 mt-6">
+        <button type="button" onclick="document.getElementById('assign-plan-modal').classList.add('hidden')"
+                class="flex-1 btn-secondary text-sm">Cancel</button>
+        <button type="submit" class="flex-1 btn-primary text-sm">Assign Plan</button>
+      </div>
+    </form>
+  </div>
+</div>

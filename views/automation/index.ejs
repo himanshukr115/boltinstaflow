@@ -1,0 +1,262 @@
+<%
+  layout = 'layouts/main';
+  title = 'Automations';
+  activePage = 'automations';
+%>
+
+<!-- Page Header -->
+<div class="mb-8 flex items-center justify-between">
+  <div>
+    <h1 class="text-2xl font-bold text-gray-900">Automations</h1>
+    <p class="text-gray-500 mt-1">Automate DMs based on triggers like keywords, comments, and story mentions</p>
+  </div>
+  <a href="/automations/create" class="btn-primary flex items-center space-x-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+    </svg>
+    <span>New Automation</span>
+  </a>
+</div>
+
+<!-- Filter/Search Bar -->
+<div class="card mb-6 py-4">
+  <div class="flex flex-col sm:flex-row gap-3">
+    <div class="relative flex-1">
+      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <input type="text" placeholder="Search automations..." class="input-field pl-9" id="automation-search">
+    </div>
+    <select class="input-field sm:w-40" id="status-filter">
+      <option value="">All statuses</option>
+      <option value="active">Active</option>
+      <option value="paused">Paused</option>
+      <option value="draft">Draft</option>
+    </select>
+    <select class="input-field sm:w-44" id="trigger-filter">
+      <option value="">All triggers</option>
+      <option value="keyword_dm">Keyword DM</option>
+      <option value="comment_keyword">Comment Keyword</option>
+      <option value="story_mention">Story Mention</option>
+      <option value="new_follower">New Follower</option>
+    </select>
+  </div>
+</div>
+
+<% const automations = typeof automations !== 'undefined' ? automations : [
+  { _id: '1', name: 'Discount Code Reply', trigger: 'keyword_dm', triggerKeyword: 'discount', status: 'active', triggerCount: 1284, lastTriggered: new Date(Date.now() - 5*60*1000) },
+  { _id: '2', name: 'Free Guide Delivery', trigger: 'comment_keyword', triggerKeyword: 'guide', status: 'active', triggerCount: 536, lastTriggered: new Date(Date.now() - 30*60*1000) },
+  { _id: '3', name: 'Story Reply Sequence', trigger: 'story_mention', triggerKeyword: null, status: 'paused', triggerCount: 89, lastTriggered: new Date(Date.now() - 24*60*60*1000) },
+  { _id: '4', name: 'New Follower Welcome', trigger: 'new_follower', triggerKeyword: null, status: 'draft', triggerCount: 0, lastTriggered: null },
+]; %>
+
+<% if (automations.length > 0) { %>
+  <!-- Automations Table -->
+  <div class="card p-0 overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5">Name</th>
+            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5 hidden sm:table-cell">Trigger</th>
+            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5">Status</th>
+            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5 hidden md:table-cell">Triggers</th>
+            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5 hidden lg:table-cell">Last Triggered</th>
+            <th class="text-right text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50" id="automations-table">
+          <% automations.forEach(function(automation) { %>
+            <tr class="hover:bg-gray-50 transition-colors automation-row" data-status="<%= automation.status %>" data-trigger="<%= automation.trigger %>">
+              <!-- Name -->
+              <td class="px-6 py-4">
+                <div class="flex items-center space-x-3">
+                  <div class="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900"><%= automation.name %></p>
+                    <% if (automation.triggerKeyword) { %>
+                      <p class="text-xs text-gray-400 font-mono">"<%= automation.triggerKeyword %>"</p>
+                    <% } %>
+                  </div>
+                </div>
+              </td>
+
+              <!-- Trigger Type -->
+              <td class="px-6 py-4 hidden sm:table-cell">
+                <span class="inline-flex items-center space-x-1 text-xs font-medium text-gray-600 bg-gray-100 px-2.5 py-1 rounded-full">
+                  <% if (automation.trigger === 'keyword_dm') { %>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span>Keyword DM</span>
+                  <% } else if (automation.trigger === 'comment_keyword') { %>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                    </svg>
+                    <span>Comment Keyword</span>
+                  <% } else if (automation.trigger === 'story_mention') { %>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.361a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                    </svg>
+                    <span>Story Mention</span>
+                  <% } else { %>
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                    </svg>
+                    <span>New Follower</span>
+                  <% } %>
+                </span>
+              </td>
+
+              <!-- Status -->
+              <td class="px-6 py-4">
+                <% if (automation.status === 'active') { %>
+                  <span class="badge-active flex items-center space-x-1 w-fit">
+                    <div class="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                    <span>Active</span>
+                  </span>
+                <% } else if (automation.status === 'paused') { %>
+                  <span class="badge-warning flex items-center space-x-1 w-fit">
+                    <div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+                    <span>Paused</span>
+                  </span>
+                <% } else { %>
+                  <span class="badge-inactive flex items-center space-x-1 w-fit">
+                    <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                    <span>Draft</span>
+                  </span>
+                <% } %>
+              </td>
+
+              <!-- Trigger Count -->
+              <td class="px-6 py-4 hidden md:table-cell">
+                <p class="text-sm font-semibold text-gray-900"><%= automation.triggerCount.toLocaleString() %></p>
+                <p class="text-xs text-gray-400">times</p>
+              </td>
+
+              <!-- Last Triggered -->
+              <td class="px-6 py-4 hidden lg:table-cell">
+                <p class="text-sm text-gray-600">
+                  <% if (automation.lastTriggered) { %>
+                    <%= Math.round((Date.now() - new Date(automation.lastTriggered).getTime()) / 60000) < 60
+                      ? Math.round((Date.now() - new Date(automation.lastTriggered).getTime()) / 60000) + ' min ago'
+                      : Math.round((Date.now() - new Date(automation.lastTriggered).getTime()) / 3600000) + ' hr ago' %>
+                  <% } else { %>
+                    <span class="text-gray-400">Never</span>
+                  <% } %>
+                </p>
+              </td>
+
+              <!-- Actions -->
+              <td class="px-6 py-4">
+                <div class="flex items-center justify-end space-x-1">
+                  <!-- Toggle Active/Pause -->
+                  <form action="/automations/<%= automation._id %>/toggle" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+                    <button type="submit" class="p-1.5 rounded-lg text-gray-400 hover:text-<%= automation.status === 'active' ? 'yellow' : 'green' %>-600 hover:bg-<%= automation.status === 'active' ? 'yellow' : 'green' %>-50 transition-colors" title="<%= automation.status === 'active' ? 'Pause' : 'Activate' %>">
+                      <% if (automation.status === 'active') { %>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      <% } else { %>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      <% } %>
+                    </button>
+                  </form>
+
+                  <!-- Analytics -->
+                  <a href="/automations/<%= automation._id %>/analytics" class="p-1.5 rounded-lg text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors" title="Analytics">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                  </a>
+
+                  <!-- Edit -->
+                  <a href="/automations/<%= automation._id %>/edit" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors" title="Edit">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                    </svg>
+                  </a>
+
+                  <!-- Delete -->
+                  <button
+                    type="button"
+                    onclick="window.confirmModal('Delete Automation', 'Delete &quot;<%= automation.name %>&quot;? This cannot be undone.', function() { document.getElementById('delete-auto-<%= automation._id %>').submit(); })"
+                    class="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                    title="Delete"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                  </button>
+                  <form id="delete-auto-<%= automation._id %>" action="/automations/<%= automation._id %>" method="POST" class="hidden">
+                    <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<% } else { %>
+  <!-- Empty State -->
+  <div class="card text-center py-16">
+    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+      </svg>
+    </div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">No automations yet</h3>
+    <p class="text-gray-500 max-w-md mx-auto mb-6">
+      Create your first automation to start automatically sending DMs when people comment keywords, mention you in stories, or send you specific messages.
+    </p>
+    <a href="/automations/create" class="btn-primary inline-flex items-center space-x-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+      </svg>
+      <span>Create First Automation</span>
+    </a>
+  </div>
+<% } %>
+
+<script>
+  // Client-side search and filter
+  const searchInput = document.getElementById('automation-search');
+  const statusFilter = document.getElementById('status-filter');
+  const triggerFilter = document.getElementById('trigger-filter');
+  const rows = document.querySelectorAll('.automation-row');
+
+  function filterTable() {
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    const statusVal = statusFilter ? statusFilter.value : '';
+    const triggerVal = triggerFilter ? triggerFilter.value : '';
+
+    rows.forEach(row => {
+      const nameEl = row.querySelector('td:first-child p');
+      const name = nameEl ? nameEl.textContent.toLowerCase() : '';
+      const status = row.dataset.status || '';
+      const trigger = row.dataset.trigger || '';
+
+      const matchSearch = !searchTerm || name.includes(searchTerm);
+      const matchStatus = !statusVal || status === statusVal;
+      const matchTrigger = !triggerVal || trigger === triggerVal;
+
+      row.style.display = matchSearch && matchStatus && matchTrigger ? '' : 'none';
+    });
+  }
+
+  if (searchInput) searchInput.addEventListener('input', filterTable);
+  if (statusFilter) statusFilter.addEventListener('change', filterTable);
+  if (triggerFilter) triggerFilter.addEventListener('change', filterTable);
+</script>

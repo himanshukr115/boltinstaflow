@@ -1,0 +1,518 @@
+<%
+  layout = 'layouts/main';
+  title = 'Create Automation';
+  activePage = 'automations';
+%>
+
+<!-- Page Header -->
+<div class="mb-8 flex items-center justify-between">
+  <div class="flex items-center space-x-3">
+    <a href="/automations" class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+    </a>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Create Automation</h1>
+      <p class="text-gray-500 text-sm mt-0.5">Build a triggered DM flow step by step</p>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+  <!-- Builder Form (2/3 width) -->
+  <div class="xl:col-span-2 space-y-5">
+
+    <form action="/automations" method="POST" id="automation-form" novalidate>
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+      <input type="hidden" name="steps" id="steps-json" value="[]">
+
+      <!-- Step 1: Choose Trigger Type -->
+      <div class="card" id="section-trigger">
+        <div class="flex items-center space-x-3 mb-5">
+          <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">1</div>
+          <h2 class="text-base font-semibold text-gray-900">Choose Trigger Type</h2>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <label class="trigger-option relative cursor-pointer" data-trigger="keyword_dm">
+            <input type="radio" name="triggerType" value="keyword_dm" class="sr-only" required>
+            <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-blue-400 hover:bg-blue-50 transition-all trigger-card">
+              <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2 trigger-icon">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-gray-700">Keyword DM</p>
+              <p class="text-xs text-gray-400 mt-0.5">Someone sends a DM with a keyword</p>
+            </div>
+          </label>
+
+          <label class="trigger-option relative cursor-pointer" data-trigger="comment_keyword">
+            <input type="radio" name="triggerType" value="comment_keyword" class="sr-only">
+            <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-blue-400 hover:bg-blue-50 transition-all trigger-card">
+              <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2 trigger-icon">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-gray-700">Comment Keyword</p>
+              <p class="text-xs text-gray-400 mt-0.5">Someone comments with a keyword</p>
+            </div>
+          </label>
+
+          <label class="trigger-option relative cursor-pointer" data-trigger="story_mention">
+            <input type="radio" name="triggerType" value="story_mention" class="sr-only">
+            <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-blue-400 hover:bg-blue-50 transition-all trigger-card">
+              <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2 trigger-icon">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.361a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-gray-700">Story Mention</p>
+              <p class="text-xs text-gray-400 mt-0.5">Someone mentions you in a story</p>
+            </div>
+          </label>
+
+          <label class="trigger-option relative cursor-pointer" data-trigger="new_follower">
+            <input type="radio" name="triggerType" value="new_follower" class="sr-only">
+            <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-blue-400 hover:bg-blue-50 transition-all trigger-card">
+              <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2 trigger-icon">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-semibold text-gray-700">New Follower</p>
+              <p class="text-xs text-gray-400 mt-0.5">Someone follows your account</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 2: Configure Trigger -->
+      <div class="card" id="section-configure">
+        <div class="flex items-center space-x-3 mb-5">
+          <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">2</div>
+          <h2 class="text-base font-semibold text-gray-900">Configure Trigger</h2>
+        </div>
+
+        <!-- Keyword config (shown for keyword triggers) -->
+        <div id="keyword-config" class="space-y-4">
+          <div>
+            <label for="triggerKeyword" class="form-label">Trigger keyword(s)</label>
+            <input type="text" id="triggerKeyword" name="triggerKeyword" class="input-field"
+              placeholder="e.g. price, discount, info (comma separated for multiple)">
+            <p class="text-xs text-gray-400 mt-1">Separate multiple keywords with commas. The automation fires when any keyword matches.</p>
+          </div>
+
+          <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-gray-700">Case sensitive matching</p>
+              <p class="text-xs text-gray-500">"Price" won't match "price" if enabled</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" name="caseSensitive" class="sr-only peer" id="case-sensitive">
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+
+          <div>
+            <label for="igAccountId" class="form-label">Instagram account</label>
+            <select id="igAccountId" name="igAccountId" class="input-field" required>
+              <option value="">Select an account...</option>
+              <% if (typeof igAccounts !== 'undefined') { %>
+                <% igAccounts.forEach(function(account) { %>
+                  <option value="<%= account._id %>">@<%= account.username %></option>
+                <% }); %>
+              <% } else { %>
+                <option value="demo1">@my_business_account</option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+
+        <!-- Story mention / new follower config (shown for those triggers) -->
+        <div id="no-keyword-config" class="hidden">
+          <div>
+            <label for="igAccountId2" class="form-label">Instagram account</label>
+            <select id="igAccountId2" name="igAccountId" class="input-field" required>
+              <option value="">Select an account...</option>
+              <% if (typeof igAccounts !== 'undefined') { %>
+                <% igAccounts.forEach(function(account) { %>
+                  <option value="<%= account._id %>">@<%= account.username %></option>
+                <% }); %>
+              <% } else { %>
+                <option value="demo1">@my_business_account</option>
+              <% } %>
+            </select>
+          </div>
+          <p class="text-sm text-gray-500 mt-3">This automation fires whenever the selected event occurs — no keyword needed.</p>
+        </div>
+      </div>
+
+      <!-- Step 3: Build Response Steps -->
+      <div class="card" id="section-steps">
+        <div class="flex items-center justify-between mb-5">
+          <div class="flex items-center space-x-3">
+            <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">3</div>
+            <h2 class="text-base font-semibold text-gray-900">Build Response Flow</h2>
+          </div>
+        </div>
+
+        <!-- Steps Container -->
+        <div id="steps-container" class="space-y-3 mb-4">
+          <!-- Steps added dynamically -->
+        </div>
+
+        <!-- Add Step Buttons -->
+        <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-100">
+          <button type="button" onclick="addStep('send_dm')" class="flex items-center space-x-1.5 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span>Send DM</span>
+          </button>
+          <button type="button" onclick="addStep('delay')" class="flex items-center space-x-1.5 px-3 py-2 bg-yellow-50 text-yellow-700 rounded-lg text-sm font-medium hover:bg-yellow-100 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Add Delay</span>
+          </button>
+          <button type="button" onclick="addStep('add_tag')" class="flex items-center space-x-1.5 px-3 py-2 bg-green-50 text-green-700 rounded-lg text-sm font-medium hover:bg-green-100 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+            </svg>
+            <span>Add Tag</span>
+          </button>
+          <button type="button" onclick="addStep('condition')" class="flex items-center space-x-1.5 px-3 py-2 bg-purple-50 text-purple-700 rounded-lg text-sm font-medium hover:bg-purple-100 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
+            </svg>
+            <span>Add Condition</span>
+          </button>
+        </div>
+
+        <p id="no-steps-msg" class="text-sm text-gray-400 text-center py-4">Add at least one "Send DM" step to your automation flow.</p>
+      </div>
+
+      <!-- Step 4: Name & Activate -->
+      <div class="card" id="section-settings">
+        <div class="flex items-center space-x-3 mb-5">
+          <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">4</div>
+          <h2 class="text-base font-semibold text-gray-900">Name &amp; Activate</h2>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label for="name" class="form-label">Automation name</label>
+            <input type="text" id="name" name="name" class="input-field" required
+              placeholder="e.g. Discount Code Auto-Reply">
+          </div>
+
+          <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-gray-700">Activate immediately</p>
+              <p class="text-xs text-gray-500">Turn on this automation right after creating it</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" name="activateNow" class="sr-only peer" id="activate-now" checked>
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-5 mt-5 border-t border-gray-100">
+          <a href="/automations" class="btn-secondary">Cancel</a>
+          <div class="flex space-x-3">
+            <button type="submit" name="saveAsDraft" value="1" class="btn-secondary">Save as Draft</button>
+            <button type="submit" class="btn-primary flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Create Automation</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Preview Panel (1/3 width) -->
+  <div class="space-y-5">
+    <div class="card sticky top-24">
+      <h3 class="text-sm font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>
+        <span>Flow Preview</span>
+      </h3>
+
+      <!-- Trigger node -->
+      <div id="preview-trigger" class="flex items-center space-x-2 mb-3">
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <div class="flex-1 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
+          <p class="text-xs font-semibold text-blue-700">TRIGGER</p>
+          <p class="text-sm text-blue-900" id="preview-trigger-text">Select a trigger type...</p>
+        </div>
+      </div>
+
+      <!-- Steps preview -->
+      <div id="preview-steps" class="space-y-2">
+        <p class="text-xs text-gray-400 text-center py-4" id="preview-empty">Add steps to see the flow preview</p>
+      </div>
+
+      <!-- Tips -->
+      <div class="mt-5 pt-4 border-t border-gray-100">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Tips</p>
+        <ul class="space-y-1.5 text-xs text-gray-500">
+          <li class="flex items-start space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Use <code class="bg-gray-100 px-1 rounded">{{name}}</code> in DM text to personalize</span>
+          </li>
+          <li class="flex items-start space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Add delays between messages to seem more natural</span>
+          </li>
+          <li class="flex items-start space-x-1.5">
+            <svg class="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Tags help you segment contacts for future campaigns</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let steps = [];
+let stepCounter = 0;
+
+// Trigger type selection
+document.querySelectorAll('.trigger-option').forEach(option => {
+  option.addEventListener('click', function() {
+    const triggerType = this.dataset.trigger;
+
+    // Update radio
+    this.querySelector('input[type="radio"]').checked = true;
+
+    // Update card styles
+    document.querySelectorAll('.trigger-card').forEach(card => {
+      card.classList.remove('border-blue-500', 'bg-blue-50');
+      card.classList.add('border-gray-200');
+    });
+    document.querySelectorAll('.trigger-icon').forEach(icon => {
+      icon.classList.remove('bg-blue-100');
+      icon.classList.add('bg-gray-100');
+    });
+
+    const card = this.querySelector('.trigger-card');
+    card.classList.remove('border-gray-200');
+    card.classList.add('border-blue-500', 'bg-blue-50');
+    const icon = this.querySelector('.trigger-icon');
+    icon.classList.remove('bg-gray-100');
+    icon.classList.add('bg-blue-100');
+
+    // Show/hide keyword config
+    const hasKeyword = triggerType === 'keyword_dm' || triggerType === 'comment_keyword';
+    document.getElementById('keyword-config').classList.toggle('hidden', !hasKeyword);
+    document.getElementById('no-keyword-config').classList.toggle('hidden', hasKeyword);
+
+    // Update preview
+    const triggerNames = {
+      keyword_dm: 'Someone sends a DM with keyword',
+      comment_keyword: 'Someone comments with keyword',
+      story_mention: 'Someone mentions in story',
+      new_follower: 'Someone follows account'
+    };
+    document.getElementById('preview-trigger-text').textContent = triggerNames[triggerType] || 'Select trigger';
+  });
+});
+
+function addStep(type) {
+  stepCounter++;
+  const id = 'step-' + stepCounter;
+
+  const templates = {
+    send_dm: `
+      <div class="step-item border border-blue-200 bg-blue-50 rounded-lg p-4" data-id="${id}" data-type="send_dm">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold step-number"></div>
+            <span class="text-sm font-semibold text-blue-800">Send DM</span>
+          </div>
+          <button type="button" onclick="removeStep('${id}')" class="text-gray-400 hover:text-red-500 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <textarea class="input-field text-sm min-h-24 resize-none step-dm-text" placeholder="Type your DM message... Use {{name}} to personalize" oninput="updateSteps()"></textarea>
+        <p class="text-xs text-gray-400 mt-1">Tip: Use {{name}} for recipient's name</p>
+      </div>`,
+    delay: `
+      <div class="step-item border border-yellow-200 bg-yellow-50 rounded-lg p-4" data-id="${id}" data-type="delay">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold step-number"></div>
+            <span class="text-sm font-semibold text-yellow-800">Delay</span>
+          </div>
+          <button type="button" onclick="removeStep('${id}')" class="text-gray-400 hover:text-red-500 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="number" min="1" max="1440" value="5" class="input-field w-24 text-sm delay-value" oninput="updateSteps()">
+          <select class="input-field flex-1 text-sm delay-unit" onchange="updateSteps()">
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+          </select>
+        </div>
+      </div>`,
+    add_tag: `
+      <div class="step-item border border-green-200 bg-green-50 rounded-lg p-4" data-id="${id}" data-type="add_tag">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold step-number"></div>
+            <span class="text-sm font-semibold text-green-800">Add Tag</span>
+          </div>
+          <button type="button" onclick="removeStep('${id}')" class="text-gray-400 hover:text-red-500 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <input type="text" class="input-field text-sm tag-value" placeholder="Tag name (e.g. interested, lead, customer)" oninput="updateSteps()">
+      </div>`,
+    condition: `
+      <div class="step-item border border-purple-200 bg-purple-50 rounded-lg p-4" data-id="${id}" data-type="condition">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold step-number"></div>
+            <span class="text-sm font-semibold text-purple-800">Condition</span>
+          </div>
+          <button type="button" onclick="removeStep('${id}')" class="text-gray-400 hover:text-red-500 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <select class="input-field text-sm mb-2 condition-type" onchange="updateSteps()">
+          <option value="has_tag">Contact has tag</option>
+          <option value="no_tag">Contact does NOT have tag</option>
+          <option value="first_interaction">Is first interaction</option>
+        </select>
+        <input type="text" class="input-field text-sm condition-value" placeholder="Tag name (if applicable)" oninput="updateSteps()">
+      </div>`
+  };
+
+  const container = document.getElementById('steps-container');
+  const emptyMsg = document.getElementById('no-steps-msg');
+  if (emptyMsg) emptyMsg.remove();
+
+  const div = document.createElement('div');
+  div.innerHTML = templates[type];
+  container.appendChild(div.firstElementChild);
+
+  renumberSteps();
+  updateSteps();
+  updatePreview();
+}
+
+function removeStep(id) {
+  const el = document.querySelector(`[data-id="${id}"]`);
+  if (el) el.remove();
+  renumberSteps();
+  updateSteps();
+  updatePreview();
+
+  if (document.querySelectorAll('.step-item').length === 0) {
+    const container = document.getElementById('steps-container');
+    const msg = document.createElement('p');
+    msg.id = 'no-steps-msg';
+    msg.className = 'text-sm text-gray-400 text-center py-4';
+    msg.textContent = 'Add at least one "Send DM" step to your automation flow.';
+    container.appendChild(msg);
+  }
+}
+
+function renumberSteps() {
+  document.querySelectorAll('.step-number').forEach((el, idx) => {
+    el.textContent = idx + 1;
+  });
+}
+
+function updateSteps() {
+  const stepEls = document.querySelectorAll('.step-item');
+  steps = Array.from(stepEls).map(el => {
+    const type = el.dataset.type;
+    const step = { type };
+    if (type === 'send_dm') {
+      step.message = el.querySelector('.step-dm-text')?.value || '';
+    } else if (type === 'delay') {
+      step.value = el.querySelector('.delay-value')?.value || 5;
+      step.unit = el.querySelector('.delay-unit')?.value || 'minutes';
+    } else if (type === 'add_tag') {
+      step.tag = el.querySelector('.tag-value')?.value || '';
+    } else if (type === 'condition') {
+      step.condition = el.querySelector('.condition-type')?.value || '';
+      step.value = el.querySelector('.condition-value')?.value || '';
+    }
+    return step;
+  });
+
+  document.getElementById('steps-json').value = JSON.stringify(steps);
+  updatePreview();
+}
+
+function updatePreview() {
+  const previewSteps = document.getElementById('preview-steps');
+  const previewEmpty = document.getElementById('preview-empty');
+
+  if (steps.length === 0) {
+    previewSteps.innerHTML = '<p class="text-xs text-gray-400 text-center py-4" id="preview-empty">Add steps to see the flow preview</p>';
+    return;
+  }
+
+  const colors = { send_dm: 'blue', delay: 'yellow', add_tag: 'green', condition: 'purple' };
+  const labels = { send_dm: 'Send DM', delay: 'Delay', add_tag: 'Add Tag', condition: 'Condition' };
+
+  let html = '';
+  steps.forEach((step, i) => {
+    const color = colors[step.type] || 'gray';
+    let desc = '';
+    if (step.type === 'send_dm') desc = step.message ? step.message.substring(0, 40) + (step.message.length > 40 ? '...' : '') : 'No message yet';
+    else if (step.type === 'delay') desc = `Wait ${step.value} ${step.unit}`;
+    else if (step.type === 'add_tag') desc = step.tag || 'No tag specified';
+    else if (step.type === 'condition') desc = step.condition || 'No condition set';
+
+    if (i > 0) {
+      html += `<div class="flex justify-center my-1"><div class="w-0.5 h-4 bg-gray-200"></div></div>`;
+    }
+    html += `
+      <div class="flex items-center space-x-2">
+        <div class="w-6 h-6 bg-${color}-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="text-xs font-bold text-${color}-600">${i + 1}</span>
+        </div>
+        <div class="flex-1 bg-${color}-50 border border-${color}-200 rounded-lg px-3 py-2">
+          <p class="text-xs font-semibold text-${color}-700">${labels[step.type]}</p>
+          <p class="text-xs text-gray-600 mt-0.5 truncate">${desc}</p>
+        </div>
+      </div>`;
+  });
+
+  previewSteps.innerHTML = html;
+}
+</script>

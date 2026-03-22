@@ -1,0 +1,346 @@
+<%
+  layout = 'layouts/admin';
+  title = 'Gateway Settings';
+  adminActivePage = 'settings';
+%>
+
+<div class="max-w-3xl space-y-6">
+
+  <!-- Razorpay Settings -->
+  <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-base font-semibold text-gray-900">Razorpay</h2>
+          <p class="text-xs text-gray-500">UPI, Cards, Net Banking, Wallets</p>
+        </div>
+      </div>
+      <% if (typeof gatewayStatus !== 'undefined' && gatewayStatus.razorpay) { %>
+        <span class="badge-active">Connected</span>
+      <% } else { %>
+        <span class="badge-inactive">Not configured</span>
+      <% } %>
+    </div>
+
+    <form action="/admin/settings/razorpay" method="POST" class="space-y-4">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="form-label">Key ID</label>
+          <input type="text" name="razorpayKeyId" class="input-field font-mono text-sm"
+            value="<%= typeof settings !== 'undefined' && settings.razorpayKeyId ? settings.razorpayKeyId : '' %>"
+            placeholder="rzp_live_xxxxxxxxxx">
+        </div>
+        <div>
+          <label class="form-label">Key Secret</label>
+          <div class="relative">
+            <input type="password" name="razorpayKeySecret" id="rzp-secret" class="input-field font-mono text-sm pr-10"
+              value="<%= typeof settings !== 'undefined' && settings.razorpayKeySecret ? settings.razorpayKeySecret : '' %>"
+              placeholder="••••••••••••••••">
+            <button type="button" onclick="togglePassword('rzp-secret')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label">Webhook Secret</label>
+        <div class="relative">
+          <input type="password" name="razorpayWebhookSecret" id="rzp-webhook" class="input-field font-mono text-sm pr-10"
+            value="<%= typeof settings !== 'undefined' && settings.razorpayWebhookSecret ? settings.razorpayWebhookSecret : '' %>"
+            placeholder="Webhook secret for signature verification">
+          <button type="button" onclick="togglePassword('rzp-webhook')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </button>
+        </div>
+        <p class="text-xs text-gray-400 mt-1">Configure webhook URL: <code class="bg-gray-100 px-1 rounded text-xs">https://yourdomain.com/webhooks/razorpay</code></p>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <button type="button" onclick="testConnection('razorpay')" class="btn-secondary text-sm flex items-center space-x-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          <span>Test Connection</span>
+        </button>
+        <button type="submit" class="btn-primary">Save Razorpay Settings</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Cashfree Settings -->
+  <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-base font-semibold text-gray-900">Cashfree</h2>
+          <p class="text-xs text-gray-500">UPI, Cards, Wallets, Paylater</p>
+        </div>
+      </div>
+      <% if (typeof gatewayStatus !== 'undefined' && gatewayStatus.cashfree) { %>
+        <span class="badge-active">Connected</span>
+      <% } else { %>
+        <span class="badge-inactive">Not configured</span>
+      <% } %>
+    </div>
+
+    <form action="/admin/settings/cashfree" method="POST" class="space-y-4">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+
+      <div>
+        <label class="form-label">Environment</label>
+        <div class="flex space-x-3">
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="cashfreeEnv" value="sandbox" class="w-4 h-4 text-blue-600"
+              <%= typeof settings !== 'undefined' && settings.cashfreeEnv === 'sandbox' ? 'checked' : '' %>>
+            <span class="text-sm font-medium text-gray-700">Sandbox (Testing)</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="cashfreeEnv" value="production" class="w-4 h-4 text-blue-600"
+              <%= typeof settings !== 'undefined' && settings.cashfreeEnv === 'production' ? 'checked' : '' %>>
+            <span class="text-sm font-medium text-gray-700">Production (Live)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="form-label">App ID</label>
+          <input type="text" name="cashfreeAppId" class="input-field font-mono text-sm"
+            value="<%= typeof settings !== 'undefined' && settings.cashfreeAppId ? settings.cashfreeAppId : '' %>"
+            placeholder="CF App ID">
+        </div>
+        <div>
+          <label class="form-label">Secret Key</label>
+          <div class="relative">
+            <input type="password" name="cashfreeSecretKey" id="cf-secret" class="input-field font-mono text-sm pr-10"
+              value="<%= typeof settings !== 'undefined' && settings.cashfreeSecretKey ? settings.cashfreeSecretKey : '' %>"
+              placeholder="••••••••••••••••">
+            <button type="button" onclick="togglePassword('cf-secret')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label">Webhook Secret</label>
+        <div class="relative">
+          <input type="password" name="cashfreeWebhookSecret" id="cf-webhook" class="input-field font-mono text-sm pr-10"
+            placeholder="Cashfree webhook secret">
+          <button type="button" onclick="togglePassword('cf-webhook')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </button>
+        </div>
+        <p class="text-xs text-gray-400 mt-1">Configure webhook URL: <code class="bg-gray-100 px-1 rounded text-xs">https://yourdomain.com/webhooks/cashfree</code></p>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <button type="button" onclick="testConnection('cashfree')" class="btn-secondary text-sm flex items-center space-x-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          <span>Test Connection</span>
+        </button>
+        <button type="submit" class="btn-primary">Save Cashfree Settings</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Email / SMTP Settings -->
+  <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <div class="flex items-center space-x-3 mb-5">
+      <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center">
+        <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-base font-semibold text-gray-900">Email (SMTP)</h2>
+        <p class="text-xs text-gray-500">Transactional email configuration</p>
+      </div>
+    </div>
+
+    <form action="/admin/settings/email" method="POST" class="space-y-4">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="form-label">SMTP Host</label>
+          <input type="text" name="smtpHost" class="input-field"
+            value="<%= typeof settings !== 'undefined' && settings.smtpHost ? settings.smtpHost : '' %>"
+            placeholder="smtp.gmail.com">
+        </div>
+        <div>
+          <label class="form-label">SMTP Port</label>
+          <input type="number" name="smtpPort" class="input-field"
+            value="<%= typeof settings !== 'undefined' && settings.smtpPort ? settings.smtpPort : 587 %>"
+            placeholder="587">
+        </div>
+        <div>
+          <label class="form-label">SMTP Username</label>
+          <input type="text" name="smtpUser" class="input-field"
+            value="<%= typeof settings !== 'undefined' && settings.smtpUser ? settings.smtpUser : '' %>"
+            placeholder="noreply@yourdomain.com">
+        </div>
+        <div>
+          <label class="form-label">SMTP Password</label>
+          <div class="relative">
+            <input type="password" name="smtpPass" id="smtp-pass" class="input-field pr-10"
+              placeholder="••••••••••••">
+            <button type="button" onclick="togglePassword('smtp-pass')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div>
+          <label class="form-label">From Name</label>
+          <input type="text" name="emailFromName" class="input-field"
+            value="<%= typeof settings !== 'undefined' && settings.emailFromName ? settings.emailFromName : 'InstaFlow' %>"
+            placeholder="InstaFlow">
+        </div>
+        <div>
+          <label class="form-label">From Email</label>
+          <input type="email" name="emailFrom" class="input-field"
+            value="<%= typeof settings !== 'undefined' && settings.emailFrom ? settings.emailFrom : '' %>"
+            placeholder="noreply@instaflow.app">
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <button type="button" onclick="testConnection('email')" class="btn-secondary text-sm flex items-center space-x-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span>Send Test Email</span>
+        </button>
+        <button type="submit" class="btn-primary">Save Email Settings</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Instagram App Settings -->
+  <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <div class="flex items-center space-x-3 mb-5">
+      <div class="w-10 h-10 bg-pink-100 rounded-xl flex items-center justify-center">
+        <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-base font-semibold text-gray-900">Instagram / Facebook App</h2>
+        <p class="text-xs text-gray-500">Meta Graph API credentials</p>
+      </div>
+    </div>
+
+    <form action="/admin/settings/instagram" method="POST" class="space-y-4">
+      <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="form-label">Facebook App ID</label>
+          <input type="text" name="fbAppId" class="input-field font-mono text-sm"
+            value="<%= typeof settings !== 'undefined' && settings.fbAppId ? settings.fbAppId : '' %>"
+            placeholder="App ID from Meta Developer Console">
+        </div>
+        <div>
+          <label class="form-label">Facebook App Secret</label>
+          <div class="relative">
+            <input type="password" name="fbAppSecret" id="fb-secret" class="input-field font-mono text-sm pr-10"
+              placeholder="••••••••••••••••">
+            <button type="button" onclick="togglePassword('fb-secret')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label">Webhook Verify Token</label>
+        <input type="text" name="fbWebhookToken" class="input-field font-mono text-sm"
+          value="<%= typeof settings !== 'undefined' && settings.fbWebhookToken ? settings.fbWebhookToken : '' %>"
+          placeholder="Custom verification token for Meta webhook">
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="submit" class="btn-primary">Save Instagram Settings</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    if (input) {
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+  }
+
+  async function testConnection(service) {
+    const btn = event.currentTarget;
+    const originalText = btn.querySelector('span')?.textContent || 'Test Connection';
+    if (btn.querySelector('span')) btn.querySelector('span').textContent = 'Testing...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/admin/settings/test-connection', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ service })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        if (btn.querySelector('span')) btn.querySelector('span').textContent = 'Connection OK!';
+        btn.classList.add('bg-green-100', 'text-green-700', 'border-green-300');
+        setTimeout(() => {
+          if (btn.querySelector('span')) btn.querySelector('span').textContent = originalText;
+          btn.classList.remove('bg-green-100', 'text-green-700', 'border-green-300');
+          btn.disabled = false;
+        }, 3000);
+      } else {
+        if (btn.querySelector('span')) btn.querySelector('span').textContent = 'Connection Failed';
+        btn.classList.add('bg-red-100', 'text-red-700', 'border-red-300');
+        setTimeout(() => {
+          if (btn.querySelector('span')) btn.querySelector('span').textContent = originalText;
+          btn.classList.remove('bg-red-100', 'text-red-700', 'border-red-300');
+          btn.disabled = false;
+        }, 3000);
+      }
+    } catch(err) {
+      if (btn.querySelector('span')) btn.querySelector('span').textContent = 'Error';
+      btn.disabled = false;
+    }
+  }
+</script>

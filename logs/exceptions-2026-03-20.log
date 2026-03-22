@@ -1,0 +1,192 @@
+2026-03-20 16:48:19 [[31merror[39m]: uncaughtException: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15) {"error":{"code":"MODULE_NOT_FOUND","requireStack":["/home/project/src/app.js","/home/project/server.js"]},"exception":true,"date":"Fri Mar 20 2026 16:48:19 GMT+0530 (India Standard Time)","process":{"pid":18,"uid":1,"gid":1,"cwd":"/home/project","execPath":"/usr/local/bin/node","version":"v22.22.0","argv":["/usr/local/bin/node","/home/project/server.js"],"memoryUsage":{"rss":0,"heapTotal":0,"heapUsed":0,"external":0,"arrayBuffers":0}},"os":{"loadavg":[0,0,0],"uptime":3465},"trace":[{"column":16340,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._resolveFilename","line":160,"method":"_resolveFilename","native":false},{"column":10576,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"defaultResolveImpl","line":160,"method":null,"native":false},{"column":10636,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"resolveForCJSWithHooks","line":160,"method":null,"native":false},{"column":13678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._load","line":160,"method":"_load","native":false},{"column":3678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"TracingChannel.traceSync","line":26,"method":"traceSync","native":false},{"column":3949,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"wrapModuleLoad","line":160,"method":null,"native":false},{"column":16804,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module.require","line":160,"method":"require","native":false},{"column":3120,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"require2","line":177,"method":null,"native":false},{"column":845506,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/blitz.4c73681d.js","function":"_0x168fc6","line":31,"method":null,"native":false},{"column":15,"file":"file:///home/project/src/app.js#cjs","function":"Object.eval","line":8,"method":"eval","native":false}]}
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-tws1owjw.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15)
+2026-03-20 16:48:53 [[31merror[39m]: uncaughtException: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15) {"error":{"code":"MODULE_NOT_FOUND","requireStack":["/home/project/src/app.js","/home/project/server.js"]},"exception":true,"date":"Fri Mar 20 2026 16:48:53 GMT+0530 (India Standard Time)","process":{"pid":17,"uid":1,"gid":1,"cwd":"/home/project","execPath":"/usr/local/bin/node","version":"v22.22.0","argv":["/usr/local/bin/node","/home/project/server.js"],"memoryUsage":{"rss":0,"heapTotal":0,"heapUsed":0,"external":0,"arrayBuffers":0}},"os":{"loadavg":[0,0,0],"uptime":10},"trace":[{"column":16340,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._resolveFilename","line":160,"method":"_resolveFilename","native":false},{"column":10576,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"defaultResolveImpl","line":160,"method":null,"native":false},{"column":10636,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"resolveForCJSWithHooks","line":160,"method":null,"native":false},{"column":13678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._load","line":160,"method":"_load","native":false},{"column":3678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"TracingChannel.traceSync","line":26,"method":"traceSync","native":false},{"column":3949,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"wrapModuleLoad","line":160,"method":null,"native":false},{"column":16804,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module.require","line":160,"method":"require","native":false},{"column":3120,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"require2","line":177,"method":null,"native":false},{"column":845506,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js","function":"_0x168fc6","line":31,"method":null,"native":false},{"column":15,"file":"file:///home/project/src/app.js#cjs","function":"Object.eval","line":8,"method":"eval","native":false}]}
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15)
+2026-03-20 17:00:33 [[31merror[39m]: uncaughtException: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15) {"error":{"code":"MODULE_NOT_FOUND","requireStack":["/home/project/src/app.js","/home/project/server.js"]},"exception":true,"date":"Fri Mar 20 2026 17:00:33 GMT+0530 (India Standard Time)","process":{"pid":22,"uid":1,"gid":1,"cwd":"/home/project","execPath":"/usr/local/bin/node","version":"v22.22.0","argv":["/usr/local/bin/node","/home/project/server.js"],"memoryUsage":{"rss":0,"heapTotal":0,"heapUsed":0,"external":0,"arrayBuffers":0}},"os":{"loadavg":[0,0,0],"uptime":709},"trace":[{"column":16340,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._resolveFilename","line":160,"method":"_resolveFilename","native":false},{"column":10576,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"defaultResolveImpl","line":160,"method":null,"native":false},{"column":10636,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"resolveForCJSWithHooks","line":160,"method":null,"native":false},{"column":13678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._load","line":160,"method":"_load","native":false},{"column":3678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"TracingChannel.traceSync","line":26,"method":"traceSync","native":false},{"column":3949,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"wrapModuleLoad","line":160,"method":null,"native":false},{"column":16804,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module.require","line":160,"method":"require","native":false},{"column":3120,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"require2","line":177,"method":null,"native":false},{"column":845506,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js","function":"_0x168fc6","line":31,"method":null,"native":false},{"column":15,"file":"file:///home/project/src/app.js#cjs","function":"Object.eval","line":8,"method":"eval","native":false}]}
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15)
+2026-03-20 17:14:39 [[31merror[39m]: uncaughtException: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15) {"error":{"code":"MODULE_NOT_FOUND","requireStack":["/home/project/src/app.js","/home/project/server.js"]},"exception":true,"date":"Fri Mar 20 2026 17:14:39 GMT+0530 (India Standard Time)","process":{"pid":17,"uid":1,"gid":1,"cwd":"/home/project","execPath":"/usr/local/bin/node","version":"v22.22.0","argv":["/usr/local/bin/node","/home/project/server.js"],"memoryUsage":{"rss":0,"heapTotal":0,"heapUsed":0,"external":0,"arrayBuffers":0}},"os":{"loadavg":[0,0,0],"uptime":12},"trace":[{"column":16340,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._resolveFilename","line":160,"method":"_resolveFilename","native":false},{"column":10576,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"defaultResolveImpl","line":160,"method":null,"native":false},{"column":10636,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"resolveForCJSWithHooks","line":160,"method":null,"native":false},{"column":13678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._load","line":160,"method":"_load","native":false},{"column":3678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"TracingChannel.traceSync","line":26,"method":"traceSync","native":false},{"column":3949,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"wrapModuleLoad","line":160,"method":null,"native":false},{"column":16804,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module.require","line":160,"method":"require","native":false},{"column":3120,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"require2","line":177,"method":null,"native":false},{"column":845506,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js","function":"_0x168fc6","line":31,"method":null,"native":false},{"column":15,"file":"file:///home/project/src/app.js#cjs","function":"Object.eval","line":8,"method":"eval","native":false}]}
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15)
+2026-03-20 17:22:18 [[31merror[39m]: uncaughtException: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15) {"error":{"code":"MODULE_NOT_FOUND","requireStack":["/home/project/src/app.js","/home/project/server.js"]},"exception":true,"date":"Fri Mar 20 2026 17:22:18 GMT+0530 (India Standard Time)","process":{"pid":23,"uid":1,"gid":1,"cwd":"/home/project","execPath":"/usr/local/bin/node","version":"v22.22.0","argv":["/usr/local/bin/node","/home/project/server.js"],"memoryUsage":{"rss":0,"heapTotal":0,"heapUsed":0,"external":0,"arrayBuffers":0}},"os":{"loadavg":[0,0,0],"uptime":471},"trace":[{"column":16340,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._resolveFilename","line":160,"method":"_resolveFilename","native":false},{"column":10576,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"defaultResolveImpl","line":160,"method":null,"native":false},{"column":10636,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"resolveForCJSWithHooks","line":160,"method":null,"native":false},{"column":13678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._load","line":160,"method":"_load","native":false},{"column":3678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"TracingChannel.traceSync","line":26,"method":"traceSync","native":false},{"column":3949,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"wrapModuleLoad","line":160,"method":null,"native":false},{"column":16804,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module.require","line":160,"method":"require","native":false},{"column":3120,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"require2","line":177,"method":null,"native":false},{"column":845506,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js","function":"_0x168fc6","line":31,"method":null,"native":false},{"column":15,"file":"file:///home/project/src/app.js#cjs","function":"Object.eval","line":8,"method":"eval","native":false}]}
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15)
+2026-03-20 20:38:08 [[31merror[39m]: uncaughtException: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15) {"error":{"code":"MODULE_NOT_FOUND","requireStack":["/home/project/src/app.js","/home/project/server.js"]},"exception":true,"date":"Fri Mar 20 2026 20:38:08 GMT+0530 (India Standard Time)","process":{"pid":17,"uid":1,"gid":1,"cwd":"/home/project","execPath":"/usr/local/bin/node","version":"v22.22.0","argv":["/usr/local/bin/node","/home/project/server.js"],"memoryUsage":{"rss":0,"heapTotal":0,"heapUsed":0,"external":0,"arrayBuffers":0}},"os":{"loadavg":[0,0,0],"uptime":28},"trace":[{"column":16340,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._resolveFilename","line":160,"method":"_resolveFilename","native":false},{"column":10576,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"defaultResolveImpl","line":160,"method":null,"native":false},{"column":10636,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"resolveForCJSWithHooks","line":160,"method":null,"native":false},{"column":13678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module._load","line":160,"method":"_load","native":false},{"column":3678,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"TracingChannel.traceSync","line":26,"method":"traceSync","native":false},{"column":3949,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"wrapModuleLoad","line":160,"method":null,"native":false},{"column":16804,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"Module.require","line":160,"method":"require","native":false},{"column":3120,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js","function":"require2","line":177,"method":null,"native":false},{"column":845506,"file":"https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/blitz.4c73681d.js","function":"_0x168fc6","line":31,"method":null,"native":false},{"column":15,"file":"file:///home/project/src/app.js#cjs","function":"Object.eval","line":8,"method":"eval","native":false}]}
+Error: Cannot find module 'csurf'
+Require stack:
+- /home/project/src/app.js
+- /home/project/server.js
+    at Module._resolveFilename (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16340)
+    at defaultResolveImpl (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10576)
+    at resolveForCJSWithHooks (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:10636)
+    at Module._load (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:13678)
+    at TracingChannel.traceSync (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:26:3678)
+    at wrapModuleLoad (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:3949)
+    at Module.require (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:160:16804)
+    at require2 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/builtins.4a5e7736.js:177:3120)
+    at _0x168fc6 (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-az3ref4y.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:845506)
+    at Object.eval (file:///home/project/src/app.js#cjs:8:15)

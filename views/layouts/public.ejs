@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InstaFlow - Instagram Automation SaaS. Grow your Instagram on autopilot with smart DMs, comment triggers, and analytics.">
+  <meta name="theme-color" content="#2563eb">
+  <title><%= typeof title !== 'undefined' ? title : 'InstaFlow - Instagram Automation SaaS' %></title>
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/output.css">
+  <style>
+    .gradient-text {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #fdf4ff 100%);
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+    }
+    .feature-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+  </style>
+</head>
+<body class="font-inter antialiased text-gray-900 bg-white">
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2 flex-shrink-0">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <span class="text-xl font-bold gradient-text">InstaFlow</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="/#features" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Features</a>
+          <a href="/#how-it-works" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">How It Works</a>
+          <a href="/subscription/pricing" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
+          <a href="#testimonials" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Reviews</a>
+        </nav>
+
+        <!-- Auth buttons -->
+        <div class="flex items-center space-x-3">
+          <a href="/auth/login" class="hidden sm:inline-flex text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors px-3 py-2">
+            Sign In
+          </a>
+          <a href="/auth/register" class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg hover:from-blue-700 hover:to-violet-700 transition-all shadow-sm shadow-blue-200">
+            Get Started Free
+          </a>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors" aria-label="Open menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <div class="px-4 py-4 space-y-2">
+        <a href="/#features" class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">Features</a>
+        <a href="/#how-it-works" class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">How It Works</a>
+        <a href="/subscription/pricing" class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">Pricing</a>
+        <a href="#testimonials" class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">Reviews</a>
+        <div class="pt-2 border-t border-gray-100 space-y-2">
+          <a href="/auth/login" class="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">Sign In</a>
+          <a href="/auth/register" class="block px-3 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg text-center">Get Started Free</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-900 text-gray-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+
+        <!-- Brand column -->
+        <div class="col-span-1 md:col-span-2">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-violet-600 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold text-white">InstaFlow</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+            Grow your Instagram audience on autopilot. Automated DMs, comment triggers, smart campaigns and powerful analytics.
+          </p>
+          <div class="flex items-center space-x-4 mt-6">
+            <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product links -->
+        <div>
+          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Product</h3>
+          <ul class="space-y-3">
+            <li><a href="/#features" class="text-sm text-gray-400 hover:text-white transition-colors">Features</a></li>
+            <li><a href="/subscription/pricing" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="#testimonials" class="text-sm text-gray-400 hover:text-white transition-colors">Reviews</a></li>
+            <li><a href="/#how-it-works" class="text-sm text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="/auth/register" class="text-sm text-gray-400 hover:text-white transition-colors">Sign Up Free</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal & support -->
+        <div>
+          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h3>
+          <ul class="space-y-3">
+            <li><a href="/about" class="text-sm text-gray-400 hover:text-white transition-colors">About</a></li>
+            <li><a href="/privacy" class="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="/terms" class="text-sm text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+            <li><a href="/docs/api" class="text-sm text-gray-400 hover:text-white transition-colors">API Docs</a></li>
+            <li><a href="/status" class="text-sm text-gray-400 hover:text-white transition-colors">Status</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
+        <p class="text-sm text-gray-500">&copy; <%= new Date().getFullYear() %> InstaFlow. All rights reserved.</p>
+        <p class="text-xs text-gray-600">Not affiliated with Meta Platforms, Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu    = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>

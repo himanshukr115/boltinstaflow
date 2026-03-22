@@ -1,0 +1,225 @@
+<%
+  layout = 'layouts/main';
+  title = 'Create Campaign';
+  activePage = 'campaigns';
+%>
+
+<div class="max-w-2xl mx-auto">
+  <!-- Header -->
+  <div class="mb-8 flex items-center space-x-3">
+    <a href="/campaigns" class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+    </a>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Create Campaign</h1>
+      <p class="text-gray-500 text-sm mt-0.5">Set up a bulk DM campaign for your audience</p>
+    </div>
+  </div>
+
+  <form action="/campaigns" method="POST" id="campaign-form" novalidate>
+    <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+
+    <!-- Campaign Name -->
+    <div class="card mb-5">
+      <h2 class="text-base font-semibold text-gray-900 mb-4">Campaign Details</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="form-label">Campaign name <span class="text-red-500">*</span></label>
+          <input type="text" id="name" name="name" class="input-field" required
+            placeholder="e.g. Summer Sale 2025" maxlength="100">
+        </div>
+
+        <div>
+          <label for="igAccountId" class="form-label">Instagram account <span class="text-red-500">*</span></label>
+          <select id="igAccountId" name="igAccountId" class="input-field" required>
+            <option value="">Select an account...</option>
+            <% if (typeof igAccounts !== 'undefined') { %>
+              <% igAccounts.forEach(function(account) { %>
+                <option value="<%= account._id %>">@<%= account.username %> (<%= account.followersCount ? account.followersCount.toLocaleString() : 0 %> followers)</option>
+              <% }); %>
+            <% } else { %>
+              <option value="demo">@my_business_account (12,400 followers)</option>
+            <% } %>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audience Filter -->
+    <div class="card mb-5">
+      <h2 class="text-base font-semibold text-gray-900 mb-4">Audience</h2>
+      <div class="space-y-4">
+        <div>
+          <label class="form-label">Audience type</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="cursor-pointer">
+              <input type="radio" name="audienceType" value="all_followers" class="sr-only audience-radio" checked>
+              <div class="border-2 border-gray-200 rounded-lg p-3 hover:border-blue-400 transition-colors audience-card">
+                <p class="text-sm font-medium text-gray-800">All Contacts</p>
+                <p class="text-xs text-gray-500 mt-0.5">All contacts in your list</p>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="audienceType" value="by_tag" class="sr-only audience-radio">
+              <div class="border-2 border-gray-200 rounded-lg p-3 hover:border-blue-400 transition-colors audience-card">
+                <p class="text-sm font-medium text-gray-800">By Tag</p>
+                <p class="text-xs text-gray-500 mt-0.5">Filter by contact tags</p>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="audienceType" value="csv_import" class="sr-only audience-radio">
+              <div class="border-2 border-gray-200 rounded-lg p-3 hover:border-blue-400 transition-colors audience-card">
+                <p class="text-sm font-medium text-gray-800">Upload CSV</p>
+                <p class="text-xs text-gray-500 mt-0.5">Import username list</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Tag filter (shown when "By Tag" selected) -->
+        <div id="tag-filter-section" class="hidden">
+          <label for="audienceTags" class="form-label">Filter by tags</label>
+          <input type="text" id="audienceTags" name="audienceTags" class="input-field"
+            placeholder="Enter tags comma-separated (e.g. interested, lead)">
+          <p class="text-xs text-gray-400 mt-1">Contacts with ANY of these tags will be included</p>
+        </div>
+
+        <!-- CSV upload (shown when "Upload CSV" selected) -->
+        <div id="csv-section" class="hidden">
+          <label for="audienceCsv" class="form-label">Upload usernames CSV</label>
+          <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+            <input type="file" id="audienceCsv" name="audienceCsv" accept=".csv" class="hidden">
+            <svg class="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            <p class="text-sm font-medium text-gray-700">Drop CSV here or <button type="button" onclick="document.getElementById('audienceCsv').click()" class="text-blue-600 hover:underline">browse</button></p>
+            <p class="text-xs text-gray-400 mt-1">One Instagram username per row, no @ symbol</p>
+          </div>
+        </div>
+
+        <!-- DM Opt-in filter -->
+        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+          <input type="checkbox" id="dmOptInOnly" name="dmOptInOnly" class="w-4 h-4 text-blue-600 rounded" checked>
+          <div>
+            <label for="dmOptInOnly" class="text-sm font-medium text-gray-700 cursor-pointer">DM opt-in contacts only</label>
+            <p class="text-xs text-gray-500">Only send to contacts who haven't opted out of DMs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Composer -->
+    <div class="card mb-5">
+      <h2 class="text-base font-semibold text-gray-900 mb-4">Message</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="message" class="form-label">DM message <span class="text-red-500">*</span></label>
+          <textarea id="message" name="message" rows="5" class="input-field resize-none" required
+            placeholder="Type your message here... Use {{name}} to personalize with recipient's name"
+            maxlength="1000"></textarea>
+          <div class="flex justify-between mt-1">
+            <p class="text-xs text-gray-400">Use <code class="bg-gray-100 px-1 rounded">{{name}}</code> to personalize with the recipient's name</p>
+            <span class="text-xs text-gray-400" id="char-count">0 / 1000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schedule -->
+    <div class="card mb-5">
+      <h2 class="text-base font-semibold text-gray-900 mb-4">Schedule</h2>
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <label class="cursor-pointer">
+            <input type="radio" name="scheduleType" value="now" class="sr-only schedule-radio" checked>
+            <div class="border-2 border-blue-500 bg-blue-50 rounded-lg p-3 schedule-card">
+              <p class="text-sm font-medium text-gray-800">Send now</p>
+              <p class="text-xs text-gray-500 mt-0.5">Start sending immediately</p>
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="radio" name="scheduleType" value="scheduled" class="sr-only schedule-radio">
+            <div class="border-2 border-gray-200 rounded-lg p-3 hover:border-blue-400 transition-colors schedule-card">
+              <p class="text-sm font-medium text-gray-800">Schedule for later</p>
+              <p class="text-xs text-gray-500 mt-0.5">Set a specific date and time</p>
+            </div>
+          </label>
+        </div>
+
+        <div id="schedule-datetime" class="hidden">
+          <label for="scheduledAt" class="form-label">Schedule date and time</label>
+          <input type="datetime-local" id="scheduledAt" name="scheduledAt" class="input-field"
+            min="<%= new Date().toISOString().slice(0, 16) %>">
+        </div>
+
+        <div class="flex items-center space-x-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <svg class="w-4 h-4 text-yellow-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <p class="text-xs text-yellow-800">
+            InstaFlow rate-limits campaign sends to comply with Instagram's API policies. Large audiences may take several hours to complete.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center justify-between">
+      <a href="/campaigns" class="btn-secondary">Cancel</a>
+      <div class="flex space-x-3">
+        <button type="submit" name="saveAsDraft" value="1" class="btn-secondary">Save as Draft</button>
+        <button type="submit" id="launch-btn" class="btn-primary flex items-center space-x-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+          <span>Launch Campaign</span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Audience type toggle
+  document.querySelectorAll('.audience-radio').forEach(radio => {
+    radio.addEventListener('change', function() {
+      document.querySelectorAll('.audience-card').forEach(c => {
+        c.classList.remove('border-blue-500', 'bg-blue-50');
+        c.classList.add('border-gray-200');
+      });
+      this.nextElementSibling.classList.remove('border-gray-200');
+      this.nextElementSibling.classList.add('border-blue-500', 'bg-blue-50');
+
+      document.getElementById('tag-filter-section').classList.toggle('hidden', this.value !== 'by_tag');
+      document.getElementById('csv-section').classList.toggle('hidden', this.value !== 'csv_import');
+    });
+  });
+
+  // Schedule toggle
+  document.querySelectorAll('.schedule-radio').forEach(radio => {
+    radio.addEventListener('change', function() {
+      document.querySelectorAll('.schedule-card').forEach(c => {
+        c.classList.remove('border-blue-500', 'bg-blue-50');
+        c.classList.add('border-gray-200');
+      });
+      this.nextElementSibling.classList.remove('border-gray-200');
+      this.nextElementSibling.classList.add('border-blue-500', 'bg-blue-50');
+      document.getElementById('schedule-datetime').classList.toggle('hidden', this.value !== 'scheduled');
+      document.getElementById('launch-btn').querySelector('span').textContent = this.value === 'scheduled' ? 'Schedule Campaign' : 'Launch Campaign';
+    });
+  });
+
+  // Character counter
+  const msgArea = document.getElementById('message');
+  const charCount = document.getElementById('char-count');
+  if (msgArea) {
+    msgArea.addEventListener('input', function() {
+      charCount.textContent = this.value.length + ' / 1000';
+    });
+  }
+
+  // Initialize first audience radio
+  document.querySelector('.audience-radio:checked')?.dispatchEvent(new Event('change'));
+</script>

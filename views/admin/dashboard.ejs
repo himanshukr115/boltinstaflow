@@ -1,0 +1,256 @@
+<%
+  layout = 'layouts/admin';
+  title = 'Admin Dashboard';
+  adminActivePage = 'dashboard';
+%>
+
+<!-- KPI Cards -->
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-6">
+
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Total Users</p>
+      <div class="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center">
+        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+      </div>
+    </div>
+    <p class="text-2xl font-bold text-gray-900"><%= typeof kpi !== 'undefined' ? kpi.totalUsers.toLocaleString() : '2,484' %></p>
+    <p class="text-xs text-green-600 font-medium mt-1">+124 this month</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">MRR</p>
+      <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center">
+        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+    </div>
+    <p class="text-2xl font-bold text-gray-900">₹<%= typeof kpi !== 'undefined' ? (kpi.mrr / 100).toLocaleString() : '3,24,780' %></p>
+    <p class="text-xs text-green-600 font-medium mt-1">+18.2% vs last month</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Active Subs</p>
+      <div class="w-7 h-7 bg-yellow-100 rounded-lg flex items-center justify-center">
+        <svg class="w-3.5 h-3.5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+        </svg>
+      </div>
+    </div>
+    <p class="text-2xl font-bold text-gray-900"><%= typeof kpi !== 'undefined' ? kpi.activeSubscriptions.toLocaleString() : '1,847' %></p>
+    <p class="text-xs text-green-600 font-medium mt-1">+89 this month</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Failed Payments</p>
+      <div class="w-7 h-7 bg-red-100 rounded-lg flex items-center justify-center">
+        <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+    </div>
+    <p class="text-2xl font-bold text-red-600"><%= typeof kpi !== 'undefined' ? kpi.failedPayments : '23' %></p>
+    <p class="text-xs text-red-500 font-medium mt-1">Needs attention</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Total DMs Sent</p>
+      <div class="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center">
+        <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        </svg>
+      </div>
+    </div>
+    <p class="text-2xl font-bold text-gray-900"><%= typeof kpi !== 'undefined' ? (kpi.totalDmsSent / 1000000).toFixed(1) + 'M' : '4.2M' %></p>
+    <p class="text-xs text-gray-500 font-medium mt-1">All time</p>
+  </div>
+
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <div class="flex items-center justify-between mb-2">
+      <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Platform Uptime</p>
+      <div class="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center">
+        <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+      </div>
+    </div>
+    <p class="text-2xl font-bold text-green-600"><%= typeof kpi !== 'undefined' ? kpi.uptime + '%' : '99.97%' %></p>
+    <p class="text-xs text-green-500 font-medium mt-1">Last 30 days</p>
+  </div>
+</div>
+
+<!-- Failed Payments Alert -->
+<% if (typeof failedPayments !== 'undefined' && failedPayments.length > 0) { %>
+<div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3">
+  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+  </svg>
+  <div>
+    <p class="text-sm font-semibold text-red-800"><%= failedPayments.length %> failed payment<%= failedPayments.length > 1 ? 's' : '' %> require attention</p>
+    <p class="text-sm text-red-700 mt-0.5">These subscriptions may be at risk of churning.</p>
+    <a href="/admin/payments?status=failed" class="text-sm text-red-600 font-semibold hover:underline mt-1 inline-block">View failed payments →</a>
+  </div>
+</div>
+<% } %>
+
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <!-- Revenue Chart (2/3) -->
+  <div class="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-base font-semibold text-gray-900">Monthly Revenue</h2>
+      <select class="text-xs border border-gray-300 rounded-lg px-2.5 py-1.5 text-gray-600">
+        <option>Last 6 months</option>
+        <option>Last 12 months</option>
+      </select>
+    </div>
+    <div class="h-52">
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Quick Actions (1/3) -->
+  <div class="bg-white rounded-xl border border-gray-200 p-6">
+    <h2 class="text-base font-semibold text-gray-900 mb-4">Quick Actions</h2>
+    <div class="space-y-2">
+      <a href="/admin/plans/create" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue-50 transition-colors group">
+        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </div>
+        <span class="text-sm font-medium text-gray-700">Create New Plan</span>
+      </a>
+      <a href="/admin/payments" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-green-50 transition-colors group">
+        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+          </svg>
+        </div>
+        <span class="text-sm font-medium text-gray-700">View Payments</span>
+      </a>
+      <a href="/admin/users" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-yellow-50 transition-colors group">
+        <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </div>
+        <span class="text-sm font-medium text-gray-700">Manage Users</span>
+      </a>
+      <a href="/admin/settings" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-purple-50 transition-colors group">
+        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          </svg>
+        </div>
+        <span class="text-sm font-medium text-gray-700">Gateway Settings</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Signups Table -->
+<div class="mt-6 bg-white rounded-xl border border-gray-200 p-6">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-base font-semibold text-gray-900">Recent User Signups</h2>
+    <a href="/admin/users" class="text-sm text-blue-600 hover:text-blue-700 font-medium">View all →</a>
+  </div>
+
+  <% const recentUsers = typeof recentUsers !== 'undefined' ? recentUsers : [
+    { name: 'Sarah Johnson', email: 'sarah@example.com', plan: 'Growth', status: 'active', joinedAt: new Date(Date.now() - 2*60*60*1000) },
+    { name: 'Mike Chen', email: 'mike@techcorp.com', plan: 'Starter', status: 'active', joinedAt: new Date(Date.now() - 5*60*60*1000) },
+    { name: 'Emma Wilson', email: 'emma@brand.co', plan: 'Pro', status: 'active', joinedAt: new Date(Date.now() - 1*24*60*60*1000) },
+    { name: 'James Kumar', email: 'james@startup.in', plan: 'Growth', status: 'active', joinedAt: new Date(Date.now() - 2*24*60*60*1000) },
+  ]; %>
+
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead>
+        <tr class="border-b border-gray-100">
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide pb-3">User</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide pb-3 hidden sm:table-cell">Plan</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide pb-3 hidden md:table-cell">Status</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide pb-3">Joined</th>
+          <th class="text-right text-xs font-semibold text-gray-500 uppercase tracking-wide pb-3">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-50">
+        <% recentUsers.forEach(function(u) { %>
+          <tr class="hover:bg-gray-50 transition-colors">
+            <td class="py-3">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                  <%= u.name.charAt(0) %>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900"><%= u.name %></p>
+                  <p class="text-xs text-gray-500"><%= u.email %></p>
+                </div>
+              </div>
+            </td>
+            <td class="py-3 hidden sm:table-cell">
+              <span class="text-sm text-gray-700 font-medium"><%= u.plan %></span>
+            </td>
+            <td class="py-3 hidden md:table-cell">
+              <span class="badge-active"><%= u.status %></span>
+            </td>
+            <td class="py-3 text-sm text-gray-600">
+              <% const diffH = Math.round((Date.now() - new Date(u.joinedAt).getTime()) / 3600000); %>
+              <%= diffH < 24 ? diffH + 'h ago' : Math.round(diffH/24) + 'd ago' %>
+            </td>
+            <td class="py-3 text-right">
+              <a href="/admin/users/<%= u._id || 'view' %>" class="text-sm text-blue-600 hover:text-blue-700 font-medium">View</a>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('revenueChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+        datasets: [{
+          label: 'MRR (₹)',
+          data: [210000, 245000, 268000, 295000, 312000, 324780],
+          backgroundColor: 'rgba(37, 99, 235, 0.8)',
+          borderRadius: 6,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: {
+              color: '#94a3b8',
+              callback: function(value) { return '₹' + (value/1000) + 'K'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#94a3b8' }
+          }
+        }
+      }
+    });
+  }
+</script>

@@ -1,0 +1,64 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Dependencies – will be installed fresh inside the container
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment files – never bake secrets into the image
+.env
+.env.*
+!.env.example
+
+# Log files
+logs/*
+*.log
+
+# User-uploaded content – mounted as a volume at runtime
+public/uploads
+
+# Test artefacts
+coverage
+.nyc_output
+tests
+__tests__
+*.test.js
+*.spec.js
+jest.config.js
+
+# Documentation
+docs
+*.md
+!README.md
+
+# Editor / OS metadata
+.DS_Store
+.vscode
+.idea
+Thumbs.db
+
+# Build artefacts that are regenerated inside the container
+public/css/output.css
+
+# Docker files themselves (not needed inside the image)
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# CI/CD
+.github
+
+# Scripts (not needed at runtime inside the container)
+scripts
+
+# PM2 ecosystem file (used on bare-metal, not inside Docker)
+ecosystem.config.js
+
+# Misc
+*.swp
+*.swo
+*~

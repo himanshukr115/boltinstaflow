@@ -1,0 +1,296 @@
+name: CI / CD – Build, Test, Deploy
+
+# ---------------------------------------------------------------------------
+# Triggers
+# ---------------------------------------------------------------------------
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# ---------------------------------------------------------------------------
+# Concurrency guard – cancel in-progress runs on the same branch so that
+# only the most recent push to main triggers a deployment.
+# ---------------------------------------------------------------------------
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# ---------------------------------------------------------------------------
+# Environment variables shared across all jobs
+# ---------------------------------------------------------------------------
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/instaflow-saas
+  NODE_VERSION: "18"
+
+# ===========================================================================
+# Jobs
+# ===========================================================================
+jobs:
+
+  # =========================================================================
+  # job: test
+  # Run the test suite with Node 18.  Coverage is uploaded to Codecov.
+  # =========================================================================
+  test:
+    name: Test (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: ["18"]
+      fail-fast: true
+
+    # Spin up MongoDB and Redis service containers so integration tests
+    # can connect to real databases without mocking.
+    services:
+      mongo:
+        image: mongo:7.0
+        env:
+          MONGO_INITDB_ROOT_USERNAME: testadmin
+          MONGO_INITDB_ROOT_PASSWORD: testpassword
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --quiet --eval \"db.adminCommand('ping').ok\"
+            --username testadmin --password testpassword --authenticationDatabase admin"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7.2-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install all dependencies (including devDeps for testing)
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Run test suite
+        env:
+          NODE_ENV: test
+          MONGO_URI: mongodb://testadmin:testpassword@localhost:27017/instaflow_test?authSource=admin
+          REDIS_URL: redis://localhost:6379
+          SESSION_SECRET: ci-test-session-secret-not-used-in-prod
+          JWT_SECRET: ci-test-jwt-secret-not-used-in-prod
+        run: npm test -- --coverage --forceExit
+
+      - name: Upload coverage to Codecov
+        if: always()
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+
+  # =========================================================================
+  # job: build
+  # Build the production Docker image and push it to GitHub Container Registry.
+  # Runs only on pushes to main (not PRs) and only after tests pass.
+  # =========================================================================
+  build:
+    name: Build & push Docker image
+    runs-on: ubuntu-22.04
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: read
+      packages: write
+      # Required for image provenance attestation
+      id-token: write
+
+    outputs:
+      # Pass the image digest to the deploy job for exact-version pinning.
+      image_digest: ${{ steps.push.outputs.digest }}
+      image_tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      # Enable Docker BuildKit layer caching via GitHub Actions cache backend.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      # Generate OCI-compliant image tags and labels.
+      # Tags produced:
+      #   ghcr.io/owner/instaflow-saas:latest
+      #   ghcr.io/owner/instaflow-saas:<short-sha>   (e.g. a1b2c3d)
+      - name: Generate image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix=,format=short
+
+      - name: Build and push image
+        id: push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: production
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # GitHub Actions cache to speed up subsequent builds
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # Provenance attestation for supply-chain security
+          provenance: true
+          sbom: true
+
+  # =========================================================================
+  # job: deploy
+  # SSH into the production server and perform a rolling update.
+  # Uses the exact image digest produced by the build job.
+  # =========================================================================
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-22.04
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    environment:
+      name: production
+      url: https://instaflow.io
+
+    steps:
+      - name: Checkout source (for compose file)
+        uses: actions/checkout@v4
+
+      - name: Set up SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Add the production host to known_hosts to prevent interactive prompts.
+      - name: Trust production host key
+        run: |
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      # Pull the new image and perform a rolling update of the app and worker
+      # containers without touching mongo or redis (--no-deps prevents cascading
+      # restarts of dependency services).
+      - name: Deploy updated containers
+        id: deploy
+        env:
+          SHA_TAG: ${{ github.sha }}
+        run: |
+          ssh "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" << 'ENDSSH'
+            set -euo pipefail
+            cd /var/www/instaflow
+
+            echo "==> Pulling updated images from GHCR..."
+            docker compose pull app worker
+
+            echo "==> Rolling update: app and worker containers..."
+            docker compose up -d --no-deps --remove-orphans app worker
+
+            echo "==> Running database seeder / migrations (idempotent)..."
+            docker compose exec -T app node src/utils/seeder.js
+
+            echo "==> Pruning dangling images older than 24h..."
+            docker image prune -f --filter "until=24h"
+          ENDSSH
+
+      # Verify the application is healthy before declaring success.
+      # Retries up to 10 times with a 5-second pause between attempts.
+      - name: Health check with retry
+        id: healthcheck
+        run: |
+          echo "==> Waiting for application to become healthy..."
+          MAX_ATTEMPTS=10
+          DELAY=5
+          for i in $(seq 1 $MAX_ATTEMPTS); do
+            echo "  Attempt $i / $MAX_ATTEMPTS..."
+            if curl -sf --max-time 10 "https://instaflow.io/healthz"; then
+              echo ""
+              echo "==> Health check passed on attempt $i."
+              exit 0
+            fi
+            echo "  Not healthy yet, waiting ${DELAY}s..."
+            sleep $DELAY
+          done
+          echo "==> Health check FAILED after $MAX_ATTEMPTS attempts."
+          exit 1
+
+      # If the health check fails, roll back to the previously running image
+      # by restarting the containers from the last known-good image tag.
+      - name: Rollback on failure
+        if: failure() && steps.healthcheck.outcome == 'failure'
+        run: |
+          echo "==> ROLLBACK initiated..."
+          ssh "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" << 'ENDSSH'
+            set -euo pipefail
+            cd /var/www/instaflow
+            # docker compose keeps the previous image around until explicitly pruned.
+            # Tagging the previous image as latest and restarting restores the old version.
+            PREVIOUS_IMAGE=$(docker images ghcr.io/${{ github.repository_owner }}/instaflow-saas \
+              --format "{{.ID}}" | sed -n '2p')
+            if [ -n "$PREVIOUS_IMAGE" ]; then
+              docker tag "$PREVIOUS_IMAGE" \
+                ghcr.io/${{ github.repository_owner }}/instaflow-saas:latest
+              docker compose up -d --no-deps app worker
+              echo "==> Rollback complete. Previous image restored."
+            else
+              echo "==> No previous image found, cannot roll back automatically."
+              exit 1
+            fi
+          ENDSSH
+
+      # Notify a Slack channel on successful deployment.
+      - name: Notify Slack – success
+        if: success()
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          payload: |
+            {
+              "text": ":white_check_mark: *InstaFlow deployed successfully*\nCommit: `${{ github.sha }}`\nAuthor: ${{ github.actor }}\nBranch: `${{ github.ref_name }}`"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      # Notify on deployment failure.
+      - name: Notify Slack – failure
+        if: failure()
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          payload: |
+            {
+              "text": ":x: *InstaFlow deployment FAILED*\nCommit: `${{ github.sha }}`\nAuthor: ${{ github.actor }}\nBranch: `${{ github.ref_name }}`\nCheck: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

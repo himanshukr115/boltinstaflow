@@ -1,0 +1,191 @@
+<%
+  layout = 'layouts/main';
+  title = 'Instagram Accounts';
+  activePage = 'settings';
+%>
+
+<!-- Page Header -->
+<div class="mb-8 flex items-start justify-between">
+  <div>
+    <h1 class="text-2xl font-bold text-gray-900">Instagram Accounts</h1>
+    <p class="text-gray-500 mt-1">Manage your connected Instagram Business accounts</p>
+  </div>
+  <a href="/instagram/connect" class="btn-primary flex items-center space-x-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+    </svg>
+    <span>Connect Account</span>
+  </a>
+</div>
+
+<!-- API Compliance Notice -->
+<div class="mb-6 flex items-start space-x-3 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+  <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+  </svg>
+  <div>
+    <p class="text-sm font-semibold text-blue-900">API Compliance Notice</p>
+    <p class="text-sm text-blue-700 mt-0.5">
+      InstaFlow uses the official Instagram Graph API. Only <strong>Instagram Business</strong> or <strong>Creator accounts</strong> linked to a Facebook Page can be connected. Personal accounts are not supported to ensure full API compliance and prevent account restrictions.
+    </p>
+    <a href="https://developers.facebook.com/docs/instagram-api/getting-started" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 font-medium hover:underline mt-1 inline-block">
+      Learn about Instagram API requirements →
+    </a>
+  </div>
+</div>
+
+<!-- Account Cards Grid -->
+<% if (typeof igAccounts !== 'undefined' && igAccounts.length > 0) { %>
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-8">
+    <% igAccounts.forEach(function(account) { %>
+      <div class="card hover:shadow-md transition-shadow">
+        <!-- Account Header -->
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-center space-x-3">
+            <div class="relative">
+              <img
+                src="<%= account.profilePic || '/images/default-avatar.png' %>"
+                alt="@<%= account.username %>"
+                class="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
+              >
+              <% if (account.status === 'connected') { %>
+                <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+              <% } else { %>
+                <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-red-500 rounded-full border-2 border-white"></div>
+              <% } %>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">@<%= account.username %></p>
+              <p class="text-xs text-gray-500"><%= account.accountType || 'Business Account' %></p>
+            </div>
+          </div>
+          <% if (account.status === 'connected') { %>
+            <span class="badge-active">Connected</span>
+          <% } else if (account.status === 'expired') { %>
+            <span class="badge-warning">Token Expired</span>
+          <% } else { %>
+            <span class="badge-danger">Disconnected</span>
+          <% } %>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-3 gap-3 mb-4 p-3 bg-gray-50 rounded-lg">
+          <div class="text-center">
+            <p class="text-sm font-bold text-gray-900"><%= account.followersCount ? (account.followersCount > 1000 ? (account.followersCount / 1000).toFixed(1) + 'K' : account.followersCount) : '12.4K' %></p>
+            <p class="text-xs text-gray-500">Followers</p>
+          </div>
+          <div class="text-center border-x border-gray-200">
+            <p class="text-sm font-bold text-gray-900"><%= account.mediaCount || '284' %></p>
+            <p class="text-xs text-gray-500">Posts</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm font-bold text-gray-900"><%= account.dmsSentTotal || '1.2K' %></p>
+            <p class="text-xs text-gray-500">DMs Sent</p>
+          </div>
+        </div>
+
+        <!-- Token Status -->
+        <% if (account.status === 'expired') { %>
+          <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <p class="text-xs font-medium text-yellow-800">Access token expired. Reconnect to restore automations.</p>
+          </div>
+        <% } %>
+
+        <!-- Last Synced -->
+        <p class="text-xs text-gray-400 mb-4">
+          Last synced: <%= account.lastSyncedAt ? new Date(account.lastSyncedAt).toLocaleString() : 'Never' %>
+        </p>
+
+        <!-- Actions -->
+        <div class="flex items-center space-x-2 pt-4 border-t border-gray-100">
+          <% if (account.status === 'connected') { %>
+            <form action="/instagram/<%= account._id %>/sync" method="POST" class="flex-1">
+              <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+              <button type="submit" class="w-full btn-secondary text-sm flex items-center justify-center space-x-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                <span>Sync</span>
+              </button>
+            </form>
+          <% } else { %>
+            <a href="/instagram/connect" class="flex-1 btn-primary text-sm text-center">Reconnect</a>
+          <% } %>
+          <button
+            type="button"
+            onclick="window.confirmModal('Disconnect Account', 'Disconnect @<%= account.username %>? All automations using this account will be paused.', function() { document.getElementById('disconnect-<%= account._id %>').submit(); })"
+            class="btn-danger text-sm flex items-center space-x-1"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+            </svg>
+            <span>Disconnect</span>
+          </button>
+          <form id="disconnect-<%= account._id %>" action="/instagram/<%= account._id %>/disconnect" method="POST" class="hidden">
+            <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+            <input type="hidden" name="_method" value="DELETE">
+          </form>
+        </div>
+      </div>
+    <% }); %>
+
+    <!-- Add new account card -->
+    <a href="/instagram/connect" class="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center hover:border-blue-400 hover:bg-blue-50 transition-colors group cursor-pointer">
+      <div class="w-12 h-12 bg-gray-100 group-hover:bg-blue-100 rounded-xl flex items-center justify-center mb-3 transition-colors">
+        <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+      </div>
+      <p class="text-sm font-semibold text-gray-600 group-hover:text-blue-600 transition-colors">Connect New Account</p>
+      <p class="text-xs text-gray-400 mt-1 text-center">Add another Instagram Business account</p>
+    </a>
+  </div>
+
+<% } else { %>
+  <!-- Empty State -->
+  <div class="card text-center py-16">
+    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"/>
+      </svg>
+    </div>
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">No Instagram accounts connected</h3>
+    <p class="text-gray-500 max-w-md mx-auto mb-6">
+      Connect your Instagram Business account to start automating DMs, running campaigns, and growing your audience.
+    </p>
+    <a href="/instagram/connect" class="btn-primary inline-flex items-center space-x-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+      </svg>
+      <span>Connect Instagram Account</span>
+    </a>
+  </div>
+<% } %>
+
+<!-- How to connect guide -->
+<div class="card mt-6 bg-slate-50 border-slate-200">
+  <h3 class="text-sm font-semibold text-gray-900 mb-4">How to connect your Instagram account</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="flex items-start space-x-3">
+      <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">1</div>
+      <div>
+        <p class="text-sm font-medium text-gray-800">Switch to Business/Creator</p>
+        <p class="text-xs text-gray-500 mt-0.5">Convert your Instagram account to Business or Creator type in Instagram settings</p>
+      </div>
+    </div>
+    <div class="flex items-start space-x-3">
+      <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">2</div>
+      <div>
+        <p class="text-sm font-medium text-gray-800">Link to Facebook Page</p>
+        <p class="text-xs text-gray-500 mt-0.5">Connect your Instagram to a Facebook Business Page in Meta Business settings</p>
+      </div>
+    </div>
+    <div class="flex items-start space-x-3">
+      <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">3</div>
+      <div>
+        <p class="text-sm font-medium text-gray-800">Authorize InstaFlow</p>
+        <p class="text-xs text-gray-500 mt-0.5">Click "Connect Account" and authorize via Facebook Login — takes 30 seconds</p>
+      </div>
+    </div>
+  </div>
+</div>

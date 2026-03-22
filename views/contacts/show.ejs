@@ -1,0 +1,316 @@
+<%
+  layout    = 'layouts/main';
+  title     = '@' + (contact.instagramUsername || 'Contact') + ' — Contact Detail';
+  activePage = 'contacts';
+%>
+
+<!-- Breadcrumb -->
+<nav class="flex items-center space-x-1 text-sm text-gray-500 mb-6">
+  <a href="/dashboard/contacts" class="hover:text-blue-600 transition-colors">Contacts</a>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+  </svg>
+  <span class="text-gray-900 font-medium">@<%= contact.instagramUsername || contact._id %></span>
+</nav>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <!-- ===== LEFT COLUMN — Profile + Tags + Fields ===== -->
+  <div class="lg:col-span-1 space-y-5">
+
+    <!-- Profile card -->
+    <div class="card p-6 text-center">
+      <div class="relative inline-block mb-4">
+        <% if (contact.profilePicUrl) { %>
+        <img src="<%= contact.profilePicUrl %>" alt="<%= contact.instagramUsername %>"
+             class="w-20 h-20 rounded-full object-cover mx-auto ring-4 ring-white shadow-md">
+        <% } else { %>
+        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-violet-500 flex items-center justify-center mx-auto ring-4 ring-white shadow-md">
+          <span class="text-white text-2xl font-bold">
+            <%= contact.instagramUsername ? contact.instagramUsername.charAt(0).toUpperCase() : '?' %>
+          </span>
+        </div>
+        <% } %>
+        <!-- Online/DM opt-in badge -->
+        <span class="absolute -bottom-1 -right-1 w-5 h-5 <%= contact.dmOptIn !== false ? 'bg-green-500' : 'bg-gray-400' %> border-2 border-white rounded-full" title="<%= contact.dmOptIn !== false ? 'DM opt-in active' : 'DM opted out' %>"></span>
+      </div>
+
+      <h2 class="text-lg font-bold text-gray-900">
+        <% if (contact.name) { %><%= contact.name %><% } else { %>@<%= contact.instagramUsername %><% } %>
+      </h2>
+      <% if (contact.instagramUsername) { %>
+      <a href="https://instagram.com/<%= contact.instagramUsername %>" target="_blank" rel="noopener noreferrer"
+         class="text-sm text-blue-500 hover:text-blue-600 font-medium">
+        @<%= contact.instagramUsername %>
+        <svg class="w-3.5 h-3.5 inline align-middle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+      <% } %>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-gray-100">
+        <div class="text-center">
+          <div class="text-lg font-black text-gray-900">
+            <%= contact.followerCount ? contact.followerCount.toLocaleString() : '—' %>
+          </div>
+          <div class="text-xs text-gray-500">Followers</div>
+        </div>
+        <div class="text-center">
+          <div class="text-lg font-black text-gray-900">
+            <%= typeof contact.leadScore !== 'undefined' ? contact.leadScore : 0 %>
+          </div>
+          <div class="text-xs text-gray-500">Lead Score</div>
+        </div>
+      </div>
+
+      <!-- DM opt-in toggle -->
+      <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+        <div>
+          <span class="text-sm font-medium text-gray-700">DM Opt-in</span>
+          <p class="text-xs text-gray-500"><%= contact.dmOptIn !== false ? 'Can receive DMs' : 'Opted out' %></p>
+        </div>
+        <form method="POST" action="/dashboard/contacts/<%= contact._id %>?_method=PUT">
+          <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+          <input type="hidden" name="dmOptIn" value="<%= contact.dmOptIn !== false ? 'false' : 'true' %>">
+          <button type="submit"
+                  class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 <%= contact.dmOptIn !== false ? 'bg-blue-600' : 'bg-gray-200' %>">
+            <span class="inline-block w-4 h-4 transform rounded-full bg-white transition-transform shadow <%= contact.dmOptIn !== false ? 'translate-x-6' : 'translate-x-1' %>"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Added date -->
+      <p class="text-xs text-gray-400 mt-4">
+        Added <%= new Date(contact.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) %>
+      </p>
+    </div>
+
+    <!-- Tags card -->
+    <div class="card p-5">
+      <h3 class="text-sm font-bold text-gray-900 mb-3 flex items-center justify-between">
+        Tags
+        <button type="button" onclick="document.getElementById('add-tag-input').focus()"
+                class="text-blue-600 hover:text-blue-700 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </h3>
+
+      <!-- Current tags -->
+      <div id="tags-container" class="flex flex-wrap gap-2 mb-3">
+        <% if (!contact.tags || contact.tags.length === 0) { %>
+        <span class="text-xs text-gray-400">No tags yet.</span>
+        <% } else { %>
+        <% contact.tags.forEach(function(tag) { %>
+        <span class="inline-flex items-center space-x-1 bg-blue-50 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">
+          <span><%= tag %></span>
+          <form method="POST" action="/dashboard/contacts/<%= contact._id %>?_method=PUT" class="inline">
+            <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+            <input type="hidden" name="removeTag" value="<%= tag %>">
+            <button type="submit" title="Remove tag" class="ml-0.5 text-blue-400 hover:text-blue-700 transition-colors">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </form>
+        </span>
+        <% }) %>
+        <% } %>
+      </div>
+
+      <!-- Add tag input -->
+      <form method="POST" action="/dashboard/contacts/<%= contact._id %>?_method=PUT" class="flex space-x-2">
+        <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+        <input id="add-tag-input" type="text" name="addTag"
+               placeholder="Add tag…"
+               class="flex-1 text-xs border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+               autocomplete="off">
+        <button type="submit" class="btn-primary text-xs px-3 py-2">Add</button>
+      </form>
+    </div>
+
+    <!-- Custom fields card -->
+    <% if (contact.customFields && contact.customFields.length > 0) { %>
+    <div class="card p-5">
+      <h3 class="text-sm font-bold text-gray-900 mb-3">Custom Fields</h3>
+      <dl class="space-y-2">
+        <% contact.customFields.forEach(function(field) { %>
+        <div class="flex items-start justify-between text-sm">
+          <dt class="text-gray-500 flex-shrink-0 w-2/5 truncate"><%= field.key %></dt>
+          <dd class="text-gray-900 font-medium text-right flex-1 break-words ml-2"><%= field.value || '—' %></dd>
+        </div>
+        <% }) %>
+      </dl>
+    </div>
+    <% } %>
+
+  </div>
+
+  <!-- ===== RIGHT COLUMN — History, Notes ===== -->
+  <div class="lg:col-span-2 space-y-5">
+
+    <!-- Conversation history -->
+    <div class="card overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <h3 class="text-base font-bold text-gray-900 flex items-center space-x-2">
+          <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          </svg>
+          <span>Conversation History</span>
+        </h3>
+        <span class="text-xs text-gray-500">Last 20 messages</span>
+      </div>
+
+      <% if (!dmHistory || dmHistory.length === 0) { %>
+      <div class="text-center py-10">
+        <svg class="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        </svg>
+        <p class="text-sm text-gray-400">No messages recorded yet.</p>
+      </div>
+      <% } else { %>
+      <div class="p-4 space-y-3 max-h-72 overflow-y-auto">
+        <% dmHistory.forEach(function(dm) { %>
+        <div class="flex items-start space-x-3 <%= dm.direction === 'outbound' ? 'flex-row-reverse space-x-reverse' : '' %>">
+          <div class="w-6 h-6 rounded-full flex-shrink-0 <%= dm.direction === 'outbound' ? 'bg-blue-600' : 'bg-gray-200' %> flex items-center justify-center">
+            <svg class="w-3 h-3 <%= dm.direction === 'outbound' ? 'text-white' : 'text-gray-500' %>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+          </div>
+          <div class="max-w-xs">
+            <div class="px-3 py-2 rounded-xl text-sm <%= dm.direction === 'outbound' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-gray-100 text-gray-800 rounded-bl-none' %>">
+              <%= dm.message %>
+            </div>
+            <p class="text-xs text-gray-400 mt-1 <%= dm.direction === 'outbound' ? 'text-right' : '' %>">
+              <%= new Date(dm.sentAt || dm.createdAt).toLocaleString('en-GB', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) %>
+              <% if (dm.direction === 'outbound' && dm.status) { %>
+              &bull; <span class="capitalize"><%= dm.status %></span>
+              <% } %>
+            </p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Campaign history -->
+    <div class="card overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h3 class="text-base font-bold text-gray-900 flex items-center space-x-2">
+          <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+          </svg>
+          <span>Campaign History</span>
+        </h3>
+      </div>
+      <% if (!campaignHistory || campaignHistory.length === 0) { %>
+      <div class="text-center py-8">
+        <p class="text-sm text-gray-400">This contact hasn't been included in any campaigns yet.</p>
+      </div>
+      <% } else { %>
+      <ul class="divide-y divide-gray-50">
+        <% campaignHistory.forEach(function(entry) { %>
+        <li class="px-6 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6"/>
+              </svg>
+            </div>
+            <div>
+              <a href="/dashboard/campaigns/<%= entry.campaignId %>" class="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
+                <%= entry.campaignName || 'Campaign' %>
+              </a>
+              <p class="text-xs text-gray-500">
+                Sent <%= new Date(entry.sentAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) %>
+              </p>
+            </div>
+          </div>
+          <%
+            const camStatusClass = {
+              delivered: 'bg-green-100 text-green-700',
+              read:      'bg-blue-100 text-blue-700',
+              failed:    'bg-red-100 text-red-700',
+              sent:      'bg-gray-100 text-gray-600',
+            };
+            const csc = camStatusClass[entry.status] || 'bg-gray-100 text-gray-600';
+          %>
+          <span class="text-xs font-medium px-2 py-1 rounded-full capitalize <%= csc %>"><%= entry.status %></span>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
+
+    <!-- Automation history -->
+    <div class="card overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h3 class="text-base font-bold text-gray-900 flex items-center space-x-2">
+          <svg class="w-4 h-4 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+          <span>Automation History</span>
+        </h3>
+      </div>
+      <% if (!automationHistory || automationHistory.length === 0) { %>
+      <div class="text-center py-8">
+        <p class="text-sm text-gray-400">No automation runs recorded for this contact.</p>
+      </div>
+      <% } else { %>
+      <ul class="divide-y divide-gray-50">
+        <% automationHistory.forEach(function(entry) { %>
+        <li class="px-6 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-violet-50 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <a href="/dashboard/automations/<%= entry.automationId %>" class="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
+                <%= entry.automationName || 'Automation' %>
+              </a>
+              <p class="text-xs text-gray-500">
+                Triggered <%= new Date(entry.triggeredAt).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) %>
+              </p>
+            </div>
+          </div>
+          <%
+            const autoStatusClass = {
+              completed: 'bg-green-100 text-green-700',
+              failed:    'bg-red-100 text-red-700',
+              running:   'bg-blue-100 text-blue-700',
+            };
+            const asc = autoStatusClass[entry.status] || 'bg-gray-100 text-gray-600';
+          %>
+          <span class="text-xs font-medium px-2 py-1 rounded-full capitalize <%= asc %>"><%= entry.status %></span>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
+
+    <!-- Notes -->
+    <div class="card p-5">
+      <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center space-x-2">
+        <svg class="w-4 h-4 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+        </svg>
+        <span>Notes</span>
+      </h3>
+      <form method="POST" action="/dashboard/contacts/<%= contact._id %>?_method=PUT">
+        <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+        <textarea name="notes" rows="4"
+                  class="w-full text-sm border border-gray-200 rounded-xl px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Add private notes about this contact…"><%= contact.notes || '' %></textarea>
+        <div class="flex justify-end mt-2">
+          <button type="submit" class="btn-primary text-sm px-4 py-2">Save Notes</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

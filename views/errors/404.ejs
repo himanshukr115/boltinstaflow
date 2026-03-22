@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | InstaFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="min-h-screen bg-gray-50 font-inter flex items-center justify-center px-4">
+
+  <div class="text-center max-w-md mx-auto">
+
+    <!-- Illustration -->
+    <div class="mb-8">
+      <div class="w-32 h-32 bg-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
+        <svg class="w-16 h-16 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+
+      <div class="relative">
+        <p class="text-8xl font-extrabold text-gray-900 leading-none">404</p>
+        <div class="absolute inset-x-0 bottom-1/2 h-1 bg-gradient-to-r from-blue-400 to-blue-600 opacity-20 rounded-full"></div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <h1 class="text-2xl font-bold text-gray-900 mb-3">Page not found</h1>
+    <p class="text-gray-500 mb-8 leading-relaxed">
+      Oops! The page you're looking for doesn't exist or has been moved.
+      Let's get you back on track.
+    </p>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="/dashboard" class="w-full sm:w-auto btn-primary flex items-center justify-center space-x-2 py-2.5 px-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span>Go to Dashboard</span>
+      </a>
+      <button onclick="history.back()" class="w-full sm:w-auto btn-secondary flex items-center justify-center space-x-2 py-2.5 px-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span>Go back</span>
+      </button>
+    </div>
+
+    <!-- Quick links -->
+    <div class="mt-10 pt-8 border-t border-gray-200">
+      <p class="text-xs text-gray-400 mb-3 font-medium">Quick links</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+        <a href="/automations" class="text-sm text-blue-600 hover:text-blue-700 font-medium">Automations</a>
+        <a href="/campaigns" class="text-sm text-blue-600 hover:text-blue-700 font-medium">Campaigns</a>
+        <a href="/contacts" class="text-sm text-blue-600 hover:text-blue-700 font-medium">Contacts</a>
+        <a href="/subscription/pricing" class="text-sm text-blue-600 hover:text-blue-700 font-medium">Pricing</a>
+        <a href="/support" class="text-sm text-blue-600 hover:text-blue-700 font-medium">Support</a>
+      </div>
+    </div>
+
+    <!-- Brand footer -->
+    <div class="mt-8 flex items-center justify-center space-x-2 opacity-60">
+      <div class="w-5 h-5 bg-gradient-to-br from-blue-500 to-blue-700 rounded flex items-center justify-center">
+        <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+      <span class="text-sm text-gray-500 font-semibold">InstaFlow</span>
+    </div>
+  </div>
+
+</body>
+</html>

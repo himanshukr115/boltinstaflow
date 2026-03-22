@@ -1,0 +1,172 @@
+<%
+  layout    = 'layouts/main';
+  title     = 'Notifications';
+  activePage = 'notifications';
+%>
+
+<!-- Page header -->
+<div class="mb-8 flex items-center justify-between">
+  <div>
+    <h1 class="text-2xl font-bold text-gray-900">Notifications</h1>
+    <p class="text-gray-500 mt-1">
+      <% if (typeof unreadCount !== 'undefined' && unreadCount > 0) { %>
+        You have <span class="font-semibold text-blue-600"><%= unreadCount %></span> unread notification<%= unreadCount !== 1 ? 's' : '' %>.
+      <% } else { %>
+        You're all caught up.
+      <% } %>
+    </p>
+  </div>
+  <% if (typeof unreadCount !== 'undefined' && unreadCount > 0) { %>
+  <form method="POST" action="/dashboard/notifications/mark-all-read">
+    <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+    <button type="submit" class="btn-secondary text-sm flex items-center space-x-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span>Mark all read</span>
+    </button>
+  </form>
+  <% } %>
+</div>
+
+<%
+  // Helper: return icon SVG based on notification type
+  function notifIcon(type) {
+    switch(type) {
+      case 'automation_triggered':  return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>';
+      case 'campaign_completed':    return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>';
+      case 'campaign_failed':       return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>';
+      case 'instagram_connected':   return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>';
+      case 'payment_success':       return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>';
+      case 'plan_limit_reached':    return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>';
+      default:                      return '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>';
+    }
+  }
+  function notifIconColor(type) {
+    switch(type) {
+      case 'automation_triggered': return 'text-blue-600 bg-blue-50';
+      case 'campaign_completed':   return 'text-green-600 bg-green-50';
+      case 'campaign_failed':      return 'text-red-600 bg-red-50';
+      case 'instagram_connected':  return 'text-violet-600 bg-violet-50';
+      case 'payment_success':      return 'text-emerald-600 bg-emerald-50';
+      case 'plan_limit_reached':   return 'text-yellow-600 bg-yellow-50';
+      default:                     return 'text-gray-600 bg-gray-100';
+    }
+  }
+%>
+
+<% if (!notifications || notifications.length === 0) { %>
+
+<!-- Empty state -->
+<div class="text-center py-20">
+  <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+    </svg>
+  </div>
+  <h3 class="text-lg font-semibold text-gray-900 mb-1">No notifications yet</h3>
+  <p class="text-sm text-gray-500">When your automations run or campaigns complete, you'll see updates here.</p>
+</div>
+
+<% } else { %>
+
+<!-- Notifications grouped by date -->
+<div class="space-y-2" id="notifications-container">
+
+  <%
+    let currentDateLabel = null;
+    const today     = new Date(); today.setHours(0,0,0,0);
+    const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
+
+    notifications.forEach(function(notif) {
+      const notifDate = new Date(notif.createdAt); notifDate.setHours(0,0,0,0);
+      let dateLabel;
+      if (notifDate.getTime() === today.getTime()) {
+        dateLabel = 'Today';
+      } else if (notifDate.getTime() === yesterday.getTime()) {
+        dateLabel = 'Yesterday';
+      } else {
+        dateLabel = notifDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+  %>
+
+    <% if (dateLabel !== currentDateLabel) { currentDateLabel = dateLabel; %>
+    <div class="pt-4 pb-2 first:pt-0">
+      <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider"><%= dateLabel %></h2>
+    </div>
+    <% } %>
+
+    <!-- Notification row -->
+    <div class="notification-item card flex items-start space-x-4 p-4 hover:bg-gray-50 transition-colors cursor-default <%= !notif.isRead ? 'border-l-4 border-blue-500' : '' %>"
+         data-id="<%= notif._id %>"
+         data-read="<%= notif.isRead %>">
+
+      <!-- Icon -->
+      <div class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center <%= notifIconColor(notif.type) %>">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <%- notifIcon(notif.type) %>
+        </svg>
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 min-w-0">
+        <div class="flex items-start justify-between">
+          <div class="flex-1">
+            <p class="text-sm font-semibold text-gray-900 <%= !notif.isRead ? '' : 'font-medium' %>">
+              <%= notif.title %>
+              <% if (!notif.isRead) { %>
+              <span class="inline-block w-2 h-2 bg-blue-500 rounded-full align-middle ml-1.5"></span>
+              <% } %>
+            </p>
+            <p class="text-sm text-gray-600 mt-0.5 leading-snug"><%= notif.message %></p>
+            <% if (notif.linkUrl) { %>
+            <a href="<%= notif.linkUrl %>" class="text-xs text-blue-600 hover:text-blue-700 font-medium mt-1 inline-block">
+              <%= notif.linkLabel || 'View details' %> &rarr;
+            </a>
+            <% } %>
+          </div>
+          <div class="flex items-center space-x-3 ml-4 flex-shrink-0">
+            <!-- Relative time -->
+            <span class="text-xs text-gray-400 whitespace-nowrap">
+              <%= notif.relativeTime || new Date(notif.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) %>
+            </span>
+
+            <!-- Mark read button (shown only for unread) -->
+            <% if (!notif.isRead) { %>
+            <form method="POST" action="/dashboard/notifications/<%= notif._id %>/read" class="inline">
+              <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+              <button type="submit" title="Mark as read"
+                      class="p-1 rounded text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </button>
+            </form>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% }); %>
+
+</div>
+
+<!-- Pagination -->
+<% if (typeof totalPages !== 'undefined' && totalPages > 1) { %>
+<div class="mt-8 flex items-center justify-between">
+  <p class="text-sm text-gray-500">
+    Page <span class="font-medium"><%= currentPage %></span> of <span class="font-medium"><%= totalPages %></span>
+  </p>
+  <div class="flex items-center space-x-2">
+    <% if (currentPage > 1) { %>
+    <a href="?page=<%= currentPage - 1 %>" class="btn-secondary text-sm">Previous</a>
+    <% } %>
+    <% if (currentPage < totalPages) { %>
+    <a href="?page=<%= currentPage + 1 %>" class="btn-secondary text-sm">Next</a>
+    <% } %>
+  </div>
+</div>
+<% } %>
+
+<% } %>

@@ -1,0 +1,1218 @@
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:13 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:14 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:15 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:16 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:17 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:18 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:19 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:21 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:23 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:24 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:24 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:24 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:24 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:24 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:25 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:25 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 04:37:26 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:17 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:18 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:19 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:20 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:21 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:22 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:23 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:24 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:27 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:28 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:28 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:28 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:29 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:29 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:30 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:30 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:31 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:32 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:32 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:33 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:34 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:email] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:email] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:automation] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:automation] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:campaign] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:campaign] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:webhook] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:webhook] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:billing] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:billing] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:notification] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:notification] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:analytics] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:analytics] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:dm] Connection error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:35 [[31merror[39m]: [Queue:dm] Queue error: connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:36 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:37 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:38 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:39 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:40 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:41 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:42 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:44 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:45 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:46 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916
+2026-03-22 10:08:48 [[31merror[39m]: Redis [main] error: connect ECONNREFUSED 127.0.0.1:6379 {"errno":-111,"code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":6379}
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at _0x436a36.afterConnect [as oncomplete] (https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/builtins.4a5e7736.js:312:10191)
+    at https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-lygvd0hk.w-credentialless-staticblitz.com/blitz.4c73681d.js:31:259916

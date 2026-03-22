@@ -1,0 +1,352 @@
+<%
+  layout = 'layouts/main';
+  title = 'Checkout';
+%>
+
+<div class="max-w-4xl mx-auto">
+  <!-- Header -->
+  <div class="mb-8 flex items-center space-x-3">
+    <a href="/subscription/pricing" class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+    </a>
+    <h1 class="text-2xl font-bold text-gray-900">Complete Your Purchase</h1>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+    <!-- Payment Section (3/5) -->
+    <div class="lg:col-span-3 space-y-5">
+
+      <!-- Payment Gateway Selector -->
+      <div class="card">
+        <h2 class="text-base font-semibold text-gray-900 mb-4">Payment Method</h2>
+
+        <!-- Gateway Tabs -->
+        <div class="flex border-b border-gray-200 mb-5">
+          <button type="button" id="tab-razorpay" onclick="switchGateway('razorpay')"
+            class="flex items-center space-x-2 px-4 py-3 border-b-2 border-blue-600 text-blue-600 text-sm font-medium -mb-px transition-colors gateway-tab">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+            </svg>
+            <span>Razorpay</span>
+          </button>
+          <button type="button" id="tab-cashfree" onclick="switchGateway('cashfree')"
+            class="flex items-center space-x-2 px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 text-sm font-medium -mb-px transition-colors gateway-tab">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span>Cashfree</span>
+          </button>
+        </div>
+
+        <!-- Razorpay Panel -->
+        <div id="razorpay-panel">
+          <p class="text-sm text-gray-600 mb-5">Pay securely via Razorpay — supports UPI, credit/debit cards, net banking, and popular wallets.</p>
+
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-600">UPI</span>
+            </div>
+            <div class="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-600">Cards</span>
+            </div>
+            <div class="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-600">Net Banking</span>
+            </div>
+          </div>
+
+          <button type="button" id="razorpay-pay-btn" onclick="initiateRazorpay()"
+            class="w-full btn-primary py-3 text-base flex items-center justify-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            <span id="pay-btn-text">Pay ₹<%= typeof order !== 'undefined' ? order.total : '2499' %> Securely</span>
+          </button>
+
+          <input type="hidden" id="razorpay-order-id" value="<%= typeof razorpayOrderId !== 'undefined' ? razorpayOrderId : '' %>">
+          <input type="hidden" id="razorpay-key" value="<%= typeof razorpayKeyId !== 'undefined' ? razorpayKeyId : '' %>">
+          <input type="hidden" id="plan-id" value="<%= typeof plan !== 'undefined' ? plan._id : '' %>">
+          <input type="hidden" id="order-amount" value="<%= typeof order !== 'undefined' ? order.total * 100 : '249900' %>">
+          <input type="hidden" id="billing-cycle" value="<%= typeof billingCycle !== 'undefined' ? billingCycle : 'monthly' %>">
+          <input type="hidden" id="coupon-code-hidden" value="">
+          <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+        </div>
+
+        <!-- Cashfree Panel -->
+        <div id="cashfree-panel" class="hidden">
+          <p class="text-sm text-gray-600 mb-5">You will be redirected to Cashfree's secure payment page to complete your purchase.</p>
+
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-600">UPI</span>
+            </div>
+            <div class="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-600">Cards</span>
+            </div>
+            <div class="flex items-center justify-center p-3 bg-gray-50 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-600">Wallets</span>
+            </div>
+          </div>
+
+          <form action="/subscription/cashfree-checkout" method="POST">
+            <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+            <input type="hidden" name="planId" value="<%= typeof plan !== 'undefined' ? plan._id : '' %>">
+            <input type="hidden" name="billingCycle" value="<%= typeof billingCycle !== 'undefined' ? billingCycle : 'monthly' %>">
+            <input type="hidden" name="coupon" id="cashfree-coupon-hidden" value="">
+            <button type="submit" class="w-full btn-primary py-3 text-base flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+              <span>Continue to Cashfree</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Security Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
+        <div class="flex items-center space-x-1.5 text-gray-500 text-xs">
+          <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          <span>256-bit SSL Encrypted</span>
+        </div>
+        <div class="flex items-center space-x-1.5 text-gray-500 text-xs">
+          <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          <span>PCI DSS Compliant</span>
+        </div>
+        <div class="flex items-center space-x-1.5 text-gray-500 text-xs">
+          <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          <span>Cancel Anytime</span>
+        </div>
+        <div class="flex items-center space-x-1.5 text-gray-500 text-xs">
+          <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>7-Day Money Back</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary (2/5) -->
+    <div class="lg:col-span-2 space-y-5">
+      <div class="card">
+        <h2 class="text-base font-semibold text-gray-900 mb-5">Order Summary</h2>
+
+        <!-- Plan Details -->
+        <div class="flex items-start space-x-3 pb-4 border-b border-gray-100">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-semibold text-gray-900"><%= typeof plan !== 'undefined' ? plan.name : 'Growth' %> Plan</p>
+            <p class="text-xs text-gray-500 mt-0.5" id="billing-cycle-label">
+              <%= typeof billingCycle !== 'undefined' && billingCycle === 'yearly' ? 'Billed annually' : 'Billed monthly' %>
+            </p>
+          </div>
+          <p class="text-sm font-semibold text-gray-900">
+            ₹<%= typeof order !== 'undefined' ? order.subtotal : '2499' %>
+          </p>
+        </div>
+
+        <!-- Coupon -->
+        <div class="py-4 border-b border-gray-100">
+          <label class="form-label text-xs">Coupon code</label>
+          <div class="flex space-x-2">
+            <input type="text" id="checkout-coupon" placeholder="Enter code" class="input-field text-sm flex-1">
+            <button type="button" onclick="applyCheckoutCoupon()" class="btn-secondary text-sm px-3 whitespace-nowrap">Apply</button>
+          </div>
+          <div id="coupon-result" class="mt-2 hidden">
+            <p id="coupon-result-msg" class="text-xs"></p>
+          </div>
+        </div>
+
+        <!-- Pricing Breakdown -->
+        <div class="py-4 space-y-3">
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Subtotal</span>
+            <span class="font-medium" id="summary-subtotal">₹<%= typeof order !== 'undefined' ? order.subtotal : '2499' %></span>
+          </div>
+          <div id="discount-row" class="hidden flex justify-between text-sm">
+            <span class="text-green-600">Discount <span id="discount-label"></span></span>
+            <span class="text-green-600 font-medium" id="discount-amount">-₹0</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-600">Tax (18% GST)</span>
+            <span class="font-medium" id="summary-tax">₹<%= typeof order !== 'undefined' ? Math.round(order.total * 0.18) : '450' %></span>
+          </div>
+          <div class="flex justify-between text-base font-bold border-t border-gray-100 pt-3">
+            <span>Total</span>
+            <span id="summary-total">₹<%= typeof order !== 'undefined' ? order.total : '2949' %></span>
+          </div>
+        </div>
+
+        <!-- Features reminder -->
+        <div class="bg-blue-50 rounded-lg p-4">
+          <p class="text-xs font-semibold text-blue-700 mb-2">What's included:</p>
+          <ul class="space-y-1.5 text-xs text-blue-600">
+            <% const planFeatures = typeof plan !== 'undefined' && plan.features ? plan.features.slice(0, 4) : ['10,000 DMs/month', '3 Instagram accounts', 'Unlimited automations', 'Priority support']; %>
+            <% planFeatures.forEach(function(f) { %>
+              <li class="flex items-center space-x-1.5">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span><%= f %></span>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Help -->
+      <div class="text-center">
+        <p class="text-xs text-gray-400">
+          Questions?
+          <a href="/support" class="text-blue-600 hover:underline">Contact support</a>
+          &middot;
+          <a href="/subscription/pricing" class="text-blue-600 hover:underline">View all plans</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Razorpay JS -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  function switchGateway(gateway) {
+    const razorpayPanel = document.getElementById('razorpay-panel');
+    const cashfreePanel = document.getElementById('cashfree-panel');
+    const tabRazorpay = document.getElementById('tab-razorpay');
+    const tabCashfree = document.getElementById('tab-cashfree');
+
+    if (gateway === 'razorpay') {
+      razorpayPanel.classList.remove('hidden');
+      cashfreePanel.classList.add('hidden');
+      tabRazorpay.classList.add('border-blue-600', 'text-blue-600');
+      tabRazorpay.classList.remove('border-transparent', 'text-gray-500');
+      tabCashfree.classList.remove('border-blue-600', 'text-blue-600');
+      tabCashfree.classList.add('border-transparent', 'text-gray-500');
+    } else {
+      cashfreePanel.classList.remove('hidden');
+      razorpayPanel.classList.add('hidden');
+      tabCashfree.classList.add('border-blue-600', 'text-blue-600');
+      tabCashfree.classList.remove('border-transparent', 'text-gray-500');
+      tabRazorpay.classList.remove('border-blue-600', 'text-blue-600');
+      tabRazorpay.classList.add('border-transparent', 'text-gray-500');
+    }
+  }
+
+  function initiateRazorpay() {
+    const orderId = document.getElementById('razorpay-order-id').value;
+    const keyId = document.getElementById('razorpay-key').value;
+    const amount = parseInt(document.getElementById('order-amount').value);
+    const planId = document.getElementById('plan-id').value;
+    const billingCycle = document.getElementById('billing-cycle').value;
+    const coupon = document.getElementById('coupon-code-hidden').value;
+
+    const options = {
+      key: keyId,
+      amount: amount,
+      currency: 'INR',
+      name: 'InstaFlow',
+      description: `<%= typeof plan !== 'undefined' ? plan.name : 'Growth' %> Plan Subscription`,
+      order_id: orderId,
+      theme: { color: '#2563eb' },
+      prefill: {
+        name: '<%= typeof user !== 'undefined' ? user.name : '' %>',
+        email: '<%= typeof user !== 'undefined' ? user.email : '' %>'
+      },
+      handler: function(response) {
+        // Send payment verification to server
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/subscription/razorpay-verify';
+
+        const fields = {
+          razorpay_payment_id: response.razorpay_payment_id,
+          razorpay_order_id: response.razorpay_order_id,
+          razorpay_signature: response.razorpay_signature,
+          planId: planId,
+          billingCycle: billingCycle,
+          coupon: coupon,
+          _csrf: '<%= typeof csrfToken !== "undefined" ? csrfToken : "" %>'
+        };
+
+        Object.entries(fields).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+      },
+      modal: {
+        ondismiss: function() {
+          document.getElementById('razorpay-pay-btn').disabled = false;
+          document.getElementById('pay-btn-text').textContent = 'Pay Securely';
+        }
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+
+    // Disable button while payment is open
+    document.getElementById('razorpay-pay-btn').disabled = true;
+    document.getElementById('pay-btn-text').textContent = 'Processing...';
+  }
+
+  async function applyCheckoutCoupon() {
+    const code = document.getElementById('checkout-coupon').value.trim();
+    const planId = document.getElementById('plan-id').value;
+    const resultDiv = document.getElementById('coupon-result');
+    const resultMsg = document.getElementById('coupon-result-msg');
+    const discountRow = document.getElementById('discount-row');
+
+    if (!code) return;
+
+    try {
+      const res = await fetch('/subscription/apply-coupon', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, planId })
+      });
+      const data = await res.json();
+
+      resultDiv.classList.remove('hidden');
+
+      if (data.valid) {
+        resultMsg.textContent = '✓ ' + data.discountText;
+        resultMsg.className = 'text-xs text-green-600';
+
+        discountRow.classList.remove('hidden');
+        document.getElementById('discount-label').textContent = '(' + code + ')';
+        document.getElementById('discount-amount').textContent = '-₹' + data.discountAmount;
+
+        // Update coupon hidden field
+        document.getElementById('coupon-code-hidden').value = code;
+        document.getElementById('cashfree-coupon-hidden').value = code;
+      } else {
+        resultMsg.textContent = data.message || 'Invalid coupon code';
+        resultMsg.className = 'text-xs text-red-500';
+        discountRow.classList.add('hidden');
+      }
+    } catch(err) {
+      resultMsg.textContent = 'Failed to apply coupon';
+      resultMsg.className = 'text-xs text-red-500';
+      resultDiv.classList.remove('hidden');
+    }
+  }
+</script>

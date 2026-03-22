@@ -1,0 +1,175 @@
+<%
+  layout = 'layouts/admin';
+  title = 'Payment History';
+  adminActivePage = 'payments';
+%>
+
+<!-- Filters -->
+<div class="flex flex-wrap gap-3 mb-5">
+  <div class="relative flex-1 min-w-48">
+    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+    </svg>
+    <input type="text" placeholder="Search by user, order ID..." class="input-field pl-9" id="payment-search">
+  </div>
+  <select class="input-field w-36" id="status-filter">
+    <option value="">All statuses</option>
+    <option value="paid" <%= typeof query !== 'undefined' && query.status === 'paid' ? 'selected' : '' %>>Paid</option>
+    <option value="pending" <%= typeof query !== 'undefined' && query.status === 'pending' ? 'selected' : '' %>>Pending</option>
+    <option value="failed" <%= typeof query !== 'undefined' && query.status === 'failed' ? 'selected' : '' %>>Failed</option>
+    <option value="refunded">Refunded</option>
+  </select>
+  <select class="input-field w-36" id="gateway-filter">
+    <option value="">All gateways</option>
+    <option value="razorpay">Razorpay</option>
+    <option value="cashfree">Cashfree</option>
+  </select>
+  <input type="date" id="date-from" class="input-field w-40" placeholder="From date">
+  <input type="date" id="date-to" class="input-field w-40" placeholder="To date">
+</div>
+
+<!-- Summary Cards -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <p class="text-xs text-gray-500 font-medium mb-1">Total Revenue</p>
+    <p class="text-xl font-bold text-green-600">₹<%= typeof paymentStats !== 'undefined' ? paymentStats.totalRevenue.toLocaleString() : '8,42,490' %></p>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <p class="text-xs text-gray-500 font-medium mb-1">This Month</p>
+    <p class="text-xl font-bold text-blue-600">₹<%= typeof paymentStats !== 'undefined' ? paymentStats.monthRevenue.toLocaleString() : '3,24,780' %></p>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <p class="text-xs text-gray-500 font-medium mb-1">Failed (30d)</p>
+    <p class="text-xl font-bold text-red-600"><%= typeof paymentStats !== 'undefined' ? paymentStats.failedCount : '23' %></p>
+  </div>
+  <div class="bg-white rounded-xl border border-gray-200 p-4">
+    <p class="text-xs text-gray-500 font-medium mb-1">Refunded (30d)</p>
+    <p class="text-xl font-bold text-gray-600">₹<%= typeof paymentStats !== 'undefined' ? paymentStats.refundedAmount.toLocaleString() : '12,470' %></p>
+  </div>
+</div>
+
+<!-- Payments Table -->
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead>
+        <tr class="border-b border-gray-100 bg-gray-50">
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5">User</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3.5 hidden sm:table-cell">Plan</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3.5">Amount</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3.5">Status</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3.5 hidden md:table-cell">Gateway</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3.5 hidden lg:table-cell">Order ID</th>
+          <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-3.5 hidden lg:table-cell">Date</th>
+          <th class="text-right text-xs font-semibold text-gray-500 uppercase tracking-wide px-6 py-3.5">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-50" id="payments-table">
+
+        <% const payments = typeof payments !== 'undefined' ? payments : [
+          { _id: 'pay1', userName: 'Sarah Johnson', userEmail: 'sarah@example.com', plan: 'Growth', amount: 2499, status: 'paid', gateway: 'razorpay', orderId: 'order_Od8f9kM', date: new Date(Date.now() - 2*60*60*1000) },
+          { _id: 'pay2', userName: 'Mike Chen', userEmail: 'mike@techcorp.com', plan: 'Starter', amount: 999, status: 'paid', gateway: 'cashfree', orderId: 'CF_0294klm', date: new Date(Date.now() - 5*60*60*1000) },
+          { _id: 'pay3', userName: 'Emma Wilson', userEmail: 'emma@brand.co', plan: 'Pro', amount: 4999, status: 'failed', gateway: 'razorpay', orderId: 'order_9ds7kP', date: new Date(Date.now() - 1*24*60*60*1000) },
+          { _id: 'pay4', userName: 'James Kumar', userEmail: 'james@startup.in', plan: 'Growth', amount: 2499, status: 'refunded', gateway: 'razorpay', orderId: 'order_4mQ9xZ', date: new Date(Date.now() - 3*24*60*60*1000) },
+        ]; %>
+
+        <% payments.forEach(function(payment) { %>
+          <tr class="hover:bg-gray-50 transition-colors payment-row" data-status="<%= payment.status %>" data-gateway="<%= payment.gateway %>">
+            <td class="px-6 py-4">
+              <p class="text-sm font-medium text-gray-900"><%= payment.userName %></p>
+              <p class="text-xs text-gray-500"><%= payment.userEmail %></p>
+            </td>
+            <td class="px-4 py-4 hidden sm:table-cell text-sm text-gray-700"><%= payment.plan %></td>
+            <td class="px-4 py-4 text-sm font-semibold text-gray-900">₹<%= payment.amount.toLocaleString() %></td>
+            <td class="px-4 py-4">
+              <% if (payment.status === 'paid') { %>
+                <span class="badge-active">Paid</span>
+              <% } else if (payment.status === 'failed') { %>
+                <span class="badge-danger">Failed</span>
+              <% } else if (payment.status === 'refunded') { %>
+                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Refunded</span>
+              <% } else { %>
+                <span class="badge-warning">Pending</span>
+              <% } %>
+            </td>
+            <td class="px-4 py-4 hidden md:table-cell">
+              <span class="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded capitalize"><%= payment.gateway %></span>
+            </td>
+            <td class="px-4 py-4 hidden lg:table-cell">
+              <code class="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded font-mono"><%= payment.orderId %></code>
+            </td>
+            <td class="px-4 py-4 hidden lg:table-cell text-sm text-gray-600">
+              <%= new Date(payment.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %>
+            </td>
+            <td class="px-6 py-4 text-right">
+              <div class="flex items-center justify-end space-x-1">
+                <a href="/admin/payments/<%= payment._id %>" class="p-1.5 rounded-lg text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors" title="View details">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                </a>
+                <% if (payment.status === 'paid') { %>
+                  <button
+                    type="button"
+                    onclick="window.confirmModal('Issue Refund', 'Issue a refund of ₹<%= payment.amount %> for this payment?', function() { document.getElementById('refund-<%= payment._id %>').submit(); })"
+                    class="p-1.5 rounded-lg text-gray-400 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+                    title="Refund"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+                    </svg>
+                  </button>
+                  <form id="refund-<%= payment._id %>" action="/admin/payments/<%= payment._id %>/refund" method="POST" class="hidden">
+                    <input type="hidden" name="_csrf" value="<%= typeof csrfToken !== 'undefined' ? csrfToken : '' %>">
+                  </form>
+                <% } %>
+              </div>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="border-t border-gray-100 px-6 py-4 flex items-center justify-between">
+    <p class="text-sm text-gray-500">
+      Showing <span class="font-medium">1</span> to <span class="font-medium"><%= payments.length %></span> of <span class="font-medium"><%= typeof pagination !== 'undefined' ? pagination.total : payments.length %></span>
+    </p>
+    <% if (typeof pagination !== 'undefined' && pagination.totalPages > 1) { %>
+      <div class="flex space-x-1">
+        <a href="?page=<%= pagination.currentPage - 1 %>" class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 <%= pagination.currentPage <= 1 ? 'opacity-50 pointer-events-none' : '' %>">Prev</a>
+        <a href="?page=<%= pagination.currentPage + 1 %>" class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 <%= pagination.currentPage >= pagination.totalPages ? 'opacity-50 pointer-events-none' : '' %>">Next</a>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  const paySearch = document.getElementById('payment-search');
+  const payStatus = document.getElementById('status-filter');
+  const payGateway = document.getElementById('gateway-filter');
+  const payRows = document.querySelectorAll('.payment-row');
+
+  function filterPayments() {
+    const s = paySearch ? paySearch.value.toLowerCase() : '';
+    const st = payStatus ? payStatus.value : '';
+    const gw = payGateway ? payGateway.value : '';
+
+    payRows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      const status = row.dataset.status || '';
+      const gateway = row.dataset.gateway || '';
+
+      const m1 = !s || text.includes(s);
+      const m2 = !st || status === st;
+      const m3 = !gw || gateway === gw;
+      row.style.display = m1 && m2 && m3 ? '' : 'none';
+    });
+  }
+
+  if (paySearch) paySearch.addEventListener('input', filterPayments);
+  if (payStatus) payStatus.addEventListener('change', filterPayments);
+  if (payGateway) payGateway.addEventListener('change', filterPayments);
+</script>
